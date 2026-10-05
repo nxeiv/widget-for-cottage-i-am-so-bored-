@@ -1723,3 +1723,121 @@ button:focus-visible,
   .error-card::before,
   .error-seal{animation:none}
 }
+
+
+/* =========================================================
+   Cottage★ Liquid Glass
+   A softer, warm interpretation of Apple's translucent
+   glass language: blur, depth, internal light, reflection,
+   and a pointer-responsive lens highlight.
+   ========================================================= */
+
+.liquid-glass{
+  --glass-x:50%;
+  --glass-y:0%;
+  position:relative;
+  isolation:isolate;
+  background:
+    radial-gradient(180px 120px at var(--glass-x) var(--glass-y),rgba(255,255,255,.34),transparent 72%),
+    linear-gradient(135deg,rgba(255,255,255,.48),rgba(255,255,255,.18) 38%,rgba(226,214,194,.20) 100%);
+  border:1px solid rgba(255,255,255,.52);
+  box-shadow:
+    0 22px 65px rgba(63,49,34,.15),
+    0 4px 16px rgba(255,255,255,.18) inset,
+    0 -1px 0 rgba(73,61,48,.10) inset;
+  -webkit-backdrop-filter:blur(28px) saturate(1.48) contrast(1.035);
+  backdrop-filter:blur(28px) saturate(1.48) contrast(1.035);
+  overflow:hidden;
+}
+
+.liquid-glass::after{
+  content:"";
+  position:absolute;
+  inset:1px;
+  z-index:-1;
+  pointer-events:none;
+  border-radius:inherit;
+  background:
+    linear-gradient(115deg,rgba(255,255,255,.28),transparent 24%,transparent 64%,rgba(255,255,255,.12)),
+    radial-gradient(120% 70% at 50% -10%,rgba(255,255,255,.22),transparent 50%);
+  opacity:.7;
+  mix-blend-mode:screen;
+}
+
+.liquid-glass:hover{
+  border-color:rgba(255,255,255,.68);
+  box-shadow:
+    0 28px 78px rgba(63,49,34,.18),
+    0 5px 18px rgba(255,255,255,.22) inset,
+    0 -1px 0 rgba(73,61,48,.08) inset;
+}
+
+.topnav.liquid-glass{
+  background:
+    radial-gradient(170px 90px at var(--glass-x) var(--glass-y),rgba(255,255,255,.28),transparent 72%),
+    linear-gradient(135deg,rgba(255,252,245,.62),rgba(255,255,255,.24) 48%,rgba(228,218,201,.34));
+}
+
+.paper.liquid-glass{
+  background:
+    radial-gradient(220px 150px at var(--glass-x) var(--glass-y),rgba(255,255,255,.30),transparent 72%),
+    linear-gradient(145deg,rgba(255,253,248,.60),rgba(247,240,226,.42));
+  border-color:rgba(255,255,255,.62);
+}
+
+.widget-frame.liquid-glass{
+  padding:10px;
+  background:
+    radial-gradient(180px 100px at var(--glass-x) var(--glass-y),rgba(255,255,255,.20),transparent 74%),
+    linear-gradient(145deg,rgba(255,255,255,.16),rgba(49,43,36,.10));
+  border-color:rgba(255,255,255,.32);
+  box-shadow:
+    0 24px 70px rgba(43,36,29,.18),
+    0 3px 12px rgba(255,255,255,.13) inset;
+}
+
+.live-panel.liquid-glass{
+  background:
+    radial-gradient(200px 140px at var(--glass-x) var(--glass-y),rgba(255,255,255,.28),transparent 72%),
+    linear-gradient(145deg,rgba(255,253,248,.58),rgba(247,240,226,.40));
+}
+
+.btn.secondary.liquid-glass{
+  background:
+    radial-gradient(120px 90px at var(--glass-x) var(--glass-y),rgba(255,255,255,.36),transparent 72%),
+    linear-gradient(135deg,rgba(255,252,244,.55),rgba(255,255,255,.22));
+  border-color:rgba(255,255,255,.56);
+  box-shadow:
+    0 12px 30px rgba(72,57,38,.10),
+    0 2px 10px rgba(255,255,255,.22) inset;
+}
+
+.btn.primary.liquid-glass{
+  background:
+    radial-gradient(110px 80px at var(--glass-x) var(--glass-y),rgba(255,255,255,.18),transparent 70%),
+    linear-gradient(135deg,rgba(54,49,43,.92),rgba(48,43,37,.82));
+  border-color:rgba(255,255,255,.22);
+  box-shadow:
+    0 16px 34px rgba(35,31,27,.22),
+    0 2px 9px rgba(255,255,255,.10) inset;
+}
+
+.nav-pill.liquid-glass{
+  background:
+    radial-gradient(100px 65px at var(--glass-x) var(--glass-y),rgba(255,255,255,.17),transparent 70%),
+    linear-gradient(135deg,rgba(54,49,43,.94),rgba(43,39,34,.86)) !important;
+  border:1px solid rgba(255,255,255,.20);
+  box-shadow:
+    0 14px 28px rgba(45,41,35,.20),
+    0 2px 9px rgba(255,255,255,.09) inset;
+}
+
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .liquid-glass{
+    background:rgba(255,252,245,.90);
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .liquid-glass::after{display:none}
+}
