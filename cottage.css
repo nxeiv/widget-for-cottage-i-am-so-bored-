@@ -2342,10 +2342,13 @@ body.page-smp .feature-group-kicker{
   border-radius:34px;
 }
 .hero h1{
-  line-height:1.04;
-  padding-bottom:.08em;
-  margin-bottom:0;
+  line-height:1.12;
+  padding-bottom:.16em;
+  margin-bottom:8px;
+}
+.hero h1 span{
+  padding-bottom:.04em;
 }
 .hero-copy{
-  margin-top:34px;
+  margin-top:22px;
 }
