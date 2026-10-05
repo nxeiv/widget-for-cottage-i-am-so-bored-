@@ -18,6 +18,27 @@
   window.addEventListener("scroll", updateProgress, { passive:true });
   window.addEventListener("scroll", updateNav, { passive:true });
 
+  // Liquid Glass pointer lens
+  const liquidGlassItems = document.querySelectorAll(".liquid-glass");
+
+  if (liquidGlassItems.length && !reduced) {
+    liquidGlassItems.forEach((glass) => {
+      glass.addEventListener("pointermove", (event) => {
+        if (!window.matchMedia("(pointer:fine)").matches) return;
+        const rect = glass.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) * 100;
+        const y = ((event.clientY - rect.top) / rect.height) * 100;
+        glass.style.setProperty("--glass-x", x + "%");
+        glass.style.setProperty("--glass-y", y + "%");
+      }, { passive:true });
+
+      glass.addEventListener("pointerleave", () => {
+        glass.style.setProperty("--glass-x", "50%");
+        glass.style.setProperty("--glass-y", "0%");
+      });
+    });
+  }
+
   // Mobile navigation
   const mobileToggle = document.querySelector(".mobile-menu-toggle");
   const mobileMenu = document.querySelector(".mobile-menu");
