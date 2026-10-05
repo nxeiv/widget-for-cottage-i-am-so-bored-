@@ -1849,7 +1849,6 @@ button:focus-visible,
    ========================================================= */
 
 :root{
-  --font-display:"DM Serif Display",ui-serif,Georgia,Cambria,"Times New Roman",serif;
   --radius-sm:12px;
   --radius-md:20px;
   --radius-lg:30px;
@@ -1859,13 +1858,6 @@ button:focus-visible,
   --motion-fast:.28s var(--motion-spring);
   --motion-base:.55s var(--motion-soft);
   --motion-slow:.85s var(--motion-soft);
-}
-
-h1,h2,.section h2,.smp-hero-title h1,.gallery-page-hero-card h1,
-.invite-copy h2,.memory-copy h3,.room-detail h3,.bot-intro h3{
-  font-family:var(--font-display);
-  font-weight:400;
-  letter-spacing:-.035em;
 }
 
 .eyebrow,.archive-kicker,.feature-group-kicker,.room-map-kicker,.bot-status,
@@ -2107,7 +2099,7 @@ h1,h2,.section h2,.smp-hero-title h1,.gallery-page-hero-card h1,
   margin:0 auto;
   max-width:620px;
   color:var(--soft);
-  font-family:var(--font-display);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   font-size:clamp(26px,4vw,44px);
   line-height:1.12;
   letter-spacing:-.03em;
@@ -2283,3 +2275,57 @@ body.page-smp .feature-group-kicker{
 @media(prefers-reduced-motion:reduce){
   .moment-image,.btn,.navlinks a,.mobile-menu a{transition:none!important}
 }
+
+
+/* Card correction — return card typography to Inter and restore clean card geometry. */
+.site-page h1,
+.site-page h2,
+.site-page h3,
+.site-page h4,
+.site-page h5,
+.site-page h6{
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-weight:800;
+  letter-spacing:-.045em;
+}
+
+.activity-grid{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+  border:0;
+}
+.activity{
+  min-height:190px;
+  padding:24px;
+  border:1px solid rgba(255,255,255,.72);
+  border-radius:var(--radius-md);
+  background:rgba(255,252,245,.50);
+  box-shadow:var(--shadow-card);
+  transition:transform var(--motion-base),background var(--motion-base),box-shadow var(--motion-base),border-color var(--motion-base);
+}
+.activity:first-child{border-left:1px solid rgba(255,255,255,.72)}
+.activity:hover{transform:translateY(-6px);background:rgba(255,253,249,.76);box-shadow:var(--shadow-float)}
+.activity h3{margin:18px 0 8px;font-size:18px}
+.activity p{font-size:13px;line-height:1.7}
+
+.bot-public-grid{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  background:none;
+  border:0;
+}
+.bot-feature{
+  min-height:170px;
+  padding:22px;
+  border:1px solid rgba(255,255,255,.72);
+  border-radius:var(--radius-md);
+  background:rgba(255,252,245,.50);
+  box-shadow:var(--shadow-card);
+  transition:transform var(--motion-base),background var(--motion-base),box-shadow var(--motion-base),border-color var(--motion-base);
+}
+.bot-feature:hover{transform:translateY(-6px);background:rgba(255,253,249,.78);box-shadow:var(--shadow-float)}
+.bot-feature h4{margin:15px 0 8px;font-size:16px}
+.bot-feature p{font-size:13px;line-height:1.7}
+
+@media(max-width:980px){.activity-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.activity-grid,.bot-public-grid{grid-template-columns:1fr}}
