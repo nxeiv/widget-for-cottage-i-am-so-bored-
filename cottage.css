@@ -2352,3 +2352,34 @@ body.page-smp .feature-group-kicker{
 .hero-copy{
   margin-top:22px;
 }
+
+
+/* SMP rules: keep the backyard's darker visual language consistent. */
+body.page-smp .rules{
+  background:
+    linear-gradient(145deg,rgba(27,31,25,.78),rgba(18,21,17,.66));
+  border-color:rgba(255,255,255,.13);
+  box-shadow:
+    0 18px 50px rgba(0,0,0,.24),
+    0 2px 12px rgba(255,255,255,.04) inset;
+  color:var(--ink);
+}
+body.page-smp .rule{
+  background:rgba(255,255,255,.035);
+  border-color:rgba(255,255,255,.10);
+}
+body.page-smp .rule strong{
+  color:#f1ece2;
+}
+body.page-smp .rule p{
+  color:#bdb6aa;
+}
+body.page-smp .rule:hover{
+  background:rgba(167,186,152,.09);
+  border-color:rgba(167,186,152,.20);
+}
+body.page-smp .notice{
+  color:#c9c2b7;
+  background:rgba(167,186,152,.07);
+  border-color:rgba(167,186,152,.14);
+}
