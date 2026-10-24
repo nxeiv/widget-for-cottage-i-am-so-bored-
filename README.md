@@ -57,13 +57,13 @@ The SMP page presents the Minecraft server as the community's backyard rather th
 
 It includes:
 
-- Chapter 1 • Season 5 presentation
-- real in-world screenshots
+- Chapter 1 • Season 6 presentation
+- archival screenshots from earlier Cottage★ worlds (Season 6 starts fresh)
 - live server state
 - session uptime and player count
 - feature directory
 - server rules
-- Java + Bedrock information
+- current Java address and Bedrock friend-invite instructions
 - Discord/home navigation
 
 The hero includes a subtle blueprint/map layer with:
@@ -71,7 +71,7 @@ The hero includes a subtle blueprint/map layer with:
 - `HOME`
 - `PATH`
 - `BACKYARD`
-- `C1 / S5`
+- `C1 / S6`
 - `01 — SHARED WORLD`
 
 The map markers are positioned against the actual grid rather than arbitrary percentage coordinates.
@@ -265,7 +265,7 @@ The website polls the status endpoint periodically and displays friendly states 
 | `cottage.css` | Shared visual system and responsive styling |
 | `cottage.js` | Shared interactions, motion, lightbox, navigation, filters, and live status |
 | `IMG_8048.jpg` | Primary Cottage★ logo artwork |
-| `IMG_8048-modified.png` | Transparent logo / favicon / interface artwork |
+| `Media/server pfp modified.png` | Tracked server avatar used for the logo / favicon / interface artwork |
 | `2C58F125-5521-4799-A848-55533DF42A82.gif` | Shared animated background artwork |
 | `Media/` | Screenshots, artwork, maps, and visual archive assets |
 | `Media/cottage-seal.svg` | Small line-art Cottage★ micro-detail |
