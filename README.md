@@ -264,9 +264,11 @@ The website polls the status endpoint periodically and displays friendly states 
 | `404.html` | Custom missing-page experience |
 | `cottage.css` | Shared visual system and responsive styling |
 | `cottage.js` | Shared interactions, motion, lightbox, navigation, filters, and live status |
-| `IMG_8048.jpg` | Primary Cottage★ logo artwork |
+
+
+
 | `Media/server pfp modified.png` | Tracked server avatar used for the logo / favicon / interface artwork |
-| `2C58F125-5521-4799-A848-55533DF42A82.gif` | Shared animated background artwork |
+| `Media/server gif.gif` | Shared animated background used by the home and SMP pages |
 | `Media/` | Screenshots, artwork, maps, and visual archive assets |
 | `Media/cottage-seal.svg` | Small line-art Cottage★ micro-detail |
 
