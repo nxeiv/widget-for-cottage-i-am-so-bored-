@@ -80,7 +80,7 @@ The map markers are positioned against the actual grid rather than arbitrary per
 Current connection details:
 - Java: `the-cottage-c1-s6.playwithbao.com:34159`
 - Bedrock: `the-cottage-c1-s6.playwithbao.com:32211`
-- Joining guide: https://discord.com/channels/1398568016915992667/1478252152169431134/1563549543365222513
+- Java joining guide: https://discord.com/channels/1398568016915992667/1478252152169431134/1563549543365222513
 - Bedrock joining uses direct server entry only; friends-list invitations are not presented as an alternative.
 - Bedrock version support follows the versions supported by Geyser; individual account/client setups may still need staff help.
 
