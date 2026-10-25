@@ -77,6 +77,15 @@ The hero includes a subtle blueprint/map layer with:
 
 The map markers are positioned against the actual grid rather than arbitrary percentage coordinates.
 
+Current connection details:
+- Java: `the-cottage-c1-s6.playwithbao.com:34159`
+- Bedrock: `the-cottage-c1-s6.playwithbao.com:32211`
+- Joining guide: https://discord.com/channels/1398568016915992667/1478252152169431134/1563549543365222513
+- Bedrock version support follows the versions supported by Geyser; individual account/client setups may still need staff help.
+
+Current Season 6 feature information includes Better Mending, Vein Mining, the UltimateTeams system, DiscordSRV chat bridging, and installed Floodgate/BedrockSkinRestorer support. Exact plugin behavior depends on the live configuration.
+
+
 ### Gallery
 
 The Gallery is a maintained visual archive rather than a stock-photo showcase.
@@ -85,14 +94,6 @@ Current categories:
 
 - **SMP**
 - **Moments**
-
-Current connection details:
-- Java: `the-cottage-c1-s6.playwithbao.com:34159`
-- Bedrock: `the-cottage-c1-s6.playwithbao.com:32211`
-- Joining guide: https://discord.com/channels/1398568016915992667/1478252152169431134/1563549543365222513
-- Bedrock version support follows the versions supported by Geyser; individual account/client setups may still need staff help.
-
-Current Season 6 feature information includes Better Mending, Vein Mining, the UltimateTeams system, DiscordSRV chat bridging, and installed Floodgate/BedrockSkinRestorer support. Exact plugin behavior depends on the live configuration.
 
 The page supports:
 
