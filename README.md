@@ -63,7 +63,8 @@ It includes:
 - session uptime and player count
 - feature directory
 - server rules
-- current Java address and Bedrock friend-invite instructions
+- direct Java and Bedrock server addresses with a link to the joining guide
+- Season 6 feature cards for Better Mending, Vein Mining, UltimateTeams, DiscordSRV, and Bedrock skin support
 - Discord/home navigation
 
 The hero includes a subtle blueprint/map layer with:
@@ -84,6 +85,14 @@ Current categories:
 
 - **SMP**
 - **Moments**
+
+Current connection details:
+- Java: `the-cottage-c1-s6.playwithbao.com:34159`
+- Bedrock: `the-cottage-c1-s6.playwithbao.com:32211`
+- Joining guide: https://discord.com/channels/1398568016915992667/1478252152169431134/1563549543365222513
+- Bedrock version support follows the versions supported by Geyser; individual account/client setups may still need staff help.
+
+Current Season 6 feature information includes Better Mending, Vein Mining, the UltimateTeams system, DiscordSRV chat bridging, and installed Floodgate/BedrockSkinRestorer support. Exact plugin behavior depends on the live configuration.
 
 The page supports:
 
