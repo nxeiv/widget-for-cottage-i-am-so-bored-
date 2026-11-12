@@ -65,6 +65,7 @@ The incomplete `season 6 world wide shot.png` upload is intentionally not refere
 - gentle camera push and low-amplitude photo drift
 - imperfect scrapbook framing, warm paper colors, tape accents, and animated monochrome grain
 - the seven-scene sequence is documented in [the production storyboard](../storyboard.md)
+- the original sound direction is documented in [the audio cue sheet](../audio-cue-sheet.md)
 
 ## Automated checks
 
