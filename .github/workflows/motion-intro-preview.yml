@@ -1,6 +1,7 @@
 name: Motion intro preview
 
 on:
+  workflow_dispatch:
   pull_request:
     paths:
       - "motion/production/remotion/**"
@@ -57,6 +58,12 @@ jobs:
 
       - name: Render final portrait master
         run: npm run render:portrait
+
+      - name: Render 60 FPS landscape compatibility export
+        run: npm run render:landscape:60
+
+      - name: Render 60 FPS portrait compatibility export
+        run: npm run render:portrait:60
 
       - name: Upload rendered deliverables
         if: always()
