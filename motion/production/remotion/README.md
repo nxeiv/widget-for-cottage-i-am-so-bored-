@@ -69,7 +69,7 @@ The incomplete `season 6 world wide shot.png` upload is intentionally not refere
 
 ## Automated checks
 
-The repository workflow installs the toolchain, type-checks the source, discovers the compositions, renders a set of storyboard stills, and exports both 120 fps masters. The workflow uploads the generated stills and MP4s as a GitHub Actions artifact.
+The repository workflow installs the toolchain, type-checks the source, discovers all four compositions, renders nine storyboard stills, and exports both 120 fps masters plus both 60 fps compatibility versions. The workflow uploads the generated stills and MP4s as a GitHub Actions artifact.
 
 ## Production status
 
