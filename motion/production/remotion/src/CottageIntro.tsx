@@ -140,7 +140,7 @@ const Scene: React.FC<{ data: SceneData; portrait: boolean }> = ({ data, portrai
   const fadeOut = interpolate(frame, [data.seconds * fps - fps * 0.35, data.seconds * fps], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const opacity = Math.min(fadeIn, fadeOut);
   const isPortrait = portrait;
-  const titleSize = isPortrait ? 74 : 88;
+  const titleSize = isPortrait ? (data.title.length > 27 ? 52 : 68) : (data.title.length > 25 ? 68 : 88);
   const textWidth = isPortrait ? width - 112 : width * 0.43;
   const primary = isPortrait
     ? { x: 90, y: height * 0.40, width: width - 180, height: height * 0.31 }
@@ -175,7 +175,6 @@ const Scene: React.FC<{ data: SceneData; portrait: boolean }> = ({ data, portrai
             fontFamily: "Georgia, 'Times New Roman', serif",
             fontSize: titleSize, fontWeight: 700, lineHeight: 0.99,
             letterSpacing: "-0.055em", maxWidth: textWidth,
-            textWrap: "pretty" as any,
           }}>{data.title}</div>
           <div style={{
             marginTop: isPortrait ? 28 : 34, maxWidth: textWidth * 0.92,
