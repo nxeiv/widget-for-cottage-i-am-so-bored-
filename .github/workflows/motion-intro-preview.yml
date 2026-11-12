@@ -4,7 +4,8 @@ on:
   workflow_dispatch:
   pull_request:
     paths:
-      - "motion/production/remotion/**"
+      - "motion/production/**"
+      - "motion/README.md"
       - "Media/**"
       - ".github/workflows/motion-intro-preview.yml"
   push:
