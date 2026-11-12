@@ -1,0 +1,64 @@
+name: Motion intro preview
+
+on:
+  pull_request:
+    paths:
+      - "motion/production/remotion/**"
+      - "Media/**"
+      - ".github/workflows/motion-intro-preview.yml"
+  push:
+    branches:
+      - motion-intro-remodel
+    paths:
+      - "motion/production/remotion/**"
+      - "Media/**"
+      - ".github/workflows/motion-intro-preview.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: motion-intro-preview-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-and-preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    defaults:
+      run:
+        working-directory: motion/production/remotion
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: motion/production/remotion/package.json
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Ensure Remotion browser
+        run: npx remotion browser ensure
+
+      - name: Type-check source
+        run: npm run typecheck
+
+      - name: Discover compositions
+        run: npm run compositions
+
+      - name: Render scene preview stills
+        run: npm run render:stills
+
+      - name: Upload preview images
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cottage-motion-intro-preview
+          path: motion/production/remotion/out/*.png
+          if-no-files-found: warn
+          retention-days: 14
