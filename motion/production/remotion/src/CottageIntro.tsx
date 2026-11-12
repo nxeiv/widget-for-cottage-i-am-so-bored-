@@ -74,7 +74,7 @@ const Grain: React.FC<{ opacity?: number; seed: number; id: string }> = ({ opaci
         <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="2" seed={seed} stitchTiles="stitch" />
         <feColorMatrix type="saturate" values="0" />
       </filter>
-      <rect width="100%" height="100%" filter="url(#paper-grain)" opacity="0.42" />
+      <rect width="100%" height="100%" filter={`url(#paper-grain-${id})`} opacity="0.42" />
     </svg>
   </AbsoluteFill>
 );
