@@ -7,7 +7,10 @@
     "studio": "remotion studio src/index.ts",
     "render:landscape": "remotion render src/index.ts CottageIntro out/cottage-intro.mp4 --codec=h264",
     "render:portrait": "remotion render src/index.ts CottageIntroPortrait out/cottage-intro-portrait.mp4 --codec=h264",
-    "still": "remotion still src/index.ts CottageIntro out/preview.png --frame=240"
+    "still": "remotion still src/index.ts CottageIntro out/preview.png --frame=240",
+    "typecheck": "tsc --noEmit",
+    "compositions": "remotion compositions src/index.ts",
+    "render:stills": "remotion still src/index.ts CottageIntro out/landscape-opening.png --frame=120 && remotion still src/index.ts CottageIntro out/landscape-backyard.png --frame=3900 && remotion still src/index.ts CottageIntroPortrait out/portrait-opening.png --frame=120 && remotion still src/index.ts CottageIntroPortrait out/portrait-backyard.png --frame=3900"
   },
   "dependencies": {
     "react": "^18.3.1",
