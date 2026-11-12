@@ -60,18 +60,18 @@ const scenes: SceneData[] = [
     background: "#FFFBF3", ink: "#2D2923", accent: "#C78F82", mood: "paper", tilt: -1.4,
   },
   {
-    id: "end", seconds: 6, eyebrow: "THE COTTAGE★",
+    id: "end", seconds: 7.8, eyebrow: "THE COTTAGE★",
     title: "The home is the people.", note: "The Cottage is the home. The SMP is the backyard.",
     photo: "Media/server pfp modified.png", secondPhoto: "Media/cottage-seal.svg",
     background: "#2D2923", ink: "#FFFBF3", accent: "#C9A968", mood: "night", tilt: 0.8,
   },
 ];
 
-const Grain: React.FC<{ opacity?: number }> = ({ opacity = 0.16 }) => (
+const Grain: React.FC<{ opacity?: number; seed: number; id: string }> = ({ opacity = 0.16, seed, id }) => (
   <AbsoluteFill style={{ pointerEvents: "none", opacity, mixBlendMode: "soft-light" }}>
     <svg width="100%" height="100%" preserveAspectRatio="none">
-      <filter id="paper-grain">
-        <feTurbulence type="fractalNoise" baseFrequency="0.82" numOctaves="3" stitchTiles="stitch" />
+      <filter id={`paper-grain-${id}`}>
+        <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="2" seed={seed} stitchTiles="stitch" />
         <feColorMatrix type="saturate" values="0" />
       </filter>
       <rect width="100%" height="100%" filter="url(#paper-grain)" opacity="0.42" />
@@ -138,8 +138,9 @@ const PhotoCard: React.FC<{
 const Scene: React.FC<{ data: SceneData; portrait: boolean }> = ({ data, portrait }) => {
   const frame = useCurrentFrame();
   const { fps, width, height } = useVideoConfig();
-  const fadeIn = interpolate(frame, [0, fps * 0.65], [0, 1], { extrapolateRight: "clamp" });
-  const fadeOut = interpolate(frame, [data.seconds * fps - fps * 0.35, data.seconds * fps], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const transitionFrames = Math.round(fps * 0.3);
+  const fadeIn = interpolate(frame, [0, transitionFrames], [0, 1], { extrapolateRight: "clamp" });
+  const fadeOut = interpolate(frame, [data.seconds * fps - transitionFrames, data.seconds * fps], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const opacity = Math.min(fadeIn, fadeOut);
   const isPortrait = portrait;
   const titleSize = isPortrait ? (data.title.length > 27 ? 52 : 68) : (data.title.length > 25 ? 68 : 88);
@@ -154,6 +155,8 @@ const Scene: React.FC<{ data: SceneData; portrait: boolean }> = ({ data, portrai
     ? { x: width * 0.08, y: height * 0.70, width: width * 0.40, height: height * 0.16 }
     : { x: width * 0.49, y: height * 0.67, width: width * 0.19, height: height * 0.22 };
   const slowPush = interpolate(frame, [0, data.seconds * fps], [1, 1.025]);
+  const textOffset = interpolate(frame, [0, fps * 0.55], [16, 0], { extrapolateRight: "clamp" });
+  const textOpacity = interpolate(frame, [0, fps * 0.45], [0, 1], { extrapolateRight: "clamp" });
 
   return (
     <AbsoluteFill style={{ backgroundColor: data.background, opacity, overflow: "hidden" }}>
@@ -167,6 +170,7 @@ const Scene: React.FC<{ data: SceneData; portrait: boolean }> = ({ data, portrai
         <div style={{
           position: "absolute", left: isPortrait ? 58 : 92, top: isPortrait ? 105 : 105,
           width: textWidth, color: data.ink,
+          opacity: textOpacity, transform: `translateY(${textOffset}px)`,
         }}>
           <div style={{
             fontFamily: "Inter, Arial, sans-serif", fontSize: isPortrait ? 17 : 18,
@@ -195,7 +199,7 @@ const Scene: React.FC<{ data: SceneData; portrait: boolean }> = ({ data, portrai
           letterSpacing: ".02em",
         }}>kept close, always.</div>
       </AbsoluteFill>
-      <Grain opacity={data.mood === "night" ? 0.22 : 0.17} />
+      <Grain id={data.id} seed={frame} opacity={data.mood === "night" ? 0.19 : 0.15} />
     </AbsoluteFill>
   );
 };
@@ -207,7 +211,7 @@ export const CottageIntro: React.FC<IntroProps> = ({ portrait }) => {
     <AbsoluteFill style={{ backgroundColor: "#2D2923" }}>
       {scenes.map((data) => {
         const start = from;
-        from += data.seconds * fps;
+        from += data.seconds * fps - Math.round(fps * 0.3);
         return (
           <Sequence key={data.id} from={start} durationInFrames={data.seconds * fps} name={data.id}>
             <Scene data={data} portrait={portrait} />
