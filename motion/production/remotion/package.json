@@ -5,12 +5,12 @@
   "description": "The Cottage★ 45-second motion introduction",
   "scripts": {
     "studio": "remotion studio src/index.ts",
-    "render:landscape": "remotion render src/index.ts CottageIntro out/cottage-intro.mp4 --codec=h264",
-    "render:portrait": "remotion render src/index.ts CottageIntroPortrait out/cottage-intro-portrait.mp4 --codec=h264",
+    "render:landscape": "remotion render src/index.ts CottageIntro out/cottage-intro.mp4 --codec=h264 --crf=18 --concurrency=2",
+    "render:portrait": "remotion render src/index.ts CottageIntroPortrait out/cottage-intro-portrait.mp4 --codec=h264 --crf=18 --concurrency=2",
     "still": "remotion still src/index.ts CottageIntro out/preview.png --frame=240",
     "typecheck": "tsc --noEmit",
     "compositions": "remotion compositions src/index.ts",
-    "render:stills": "remotion still src/index.ts CottageIntro out/landscape-opening.png --frame=120 && remotion still src/index.ts CottageIntro out/landscape-backyard.png --frame=3900 && remotion still src/index.ts CottageIntroPortrait out/portrait-opening.png --frame=120 && remotion still src/index.ts CottageIntroPortrait out/portrait-backyard.png --frame=3900"
+    "render:stills": "remotion still src/index.ts CottageIntro out/01-opening.png --frame=240 && remotion still src/index.ts CottageIntro out/02-familiar.png --frame=960 && remotion still src/index.ts CottageIntro out/03-laugh.png --frame=1680 && remotion still src/index.ts CottageIntro out/04-together.png --frame=2460 && remotion still src/index.ts CottageIntro out/05-backyard.png --frame=3360 && remotion still src/index.ts CottageIntro out/06-memory.png --frame=4260 && remotion still src/index.ts CottageIntro out/07-ending.png --frame=5040 && remotion still src/index.ts CottageIntroPortrait out/portrait-opening.png --frame=240 && remotion still src/index.ts CottageIntroPortrait out/portrait-backyard.png --frame=3360"
   },
   "dependencies": {
     "react": "^18.3.1",
