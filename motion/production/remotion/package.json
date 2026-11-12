@@ -13,14 +13,14 @@
     "render:stills": "remotion still src/index.ts CottageIntro out/01-opening.png --frame=240 && remotion still src/index.ts CottageIntro out/02-familiar.png --frame=960 && remotion still src/index.ts CottageIntro out/03-laugh.png --frame=1680 && remotion still src/index.ts CottageIntro out/04-together.png --frame=2460 && remotion still src/index.ts CottageIntro out/05-backyard.png --frame=3360 && remotion still src/index.ts CottageIntro out/06-memory.png --frame=4260 && remotion still src/index.ts CottageIntro out/07-ending.png --frame=5040 && remotion still src/index.ts CottageIntroPortrait out/portrait-opening.png --frame=240 && remotion still src/index.ts CottageIntroPortrait out/portrait-backyard.png --frame=3360"
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "remotion": "^4.0.0"
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.498"
   },
   "devDependencies": {
-    "@remotion/cli": "^4.0.0",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "typescript": "^5.5.4"
+    "@remotion/cli": "4.0.498",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "typescript": "5.5.4"
   }
 }
