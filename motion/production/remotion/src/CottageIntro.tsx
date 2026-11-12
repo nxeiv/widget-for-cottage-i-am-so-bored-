@@ -48,7 +48,9 @@ const scenes: SceneData[] = [
   {
     id: "backyard", seconds: 8, eyebrow: "AND WHEN WE FEEL LIKE PLAYING",
     title: "There's a backyard, too.", note: "A world to build, wander, get lost in, and make ours.",
-    photo: "Media/SMP 2.png", secondPhoto: "Media/SMP 5.png", thirdPhoto: "Media/SMP 7.png",
+    photo: "Media/far zoom shot of 2 players sitting near a cherry tree s6.png",
+    secondPhoto: "Media/wide shot of background with 2 players fishing in a brige s6.png",
+    thirdPhoto: "Media/SMP 7.png",
     background: "#55644A", ink: "#FFFBF3", accent: "#C9A968", mood: "night", tilt: 1.1,
   },
   {
