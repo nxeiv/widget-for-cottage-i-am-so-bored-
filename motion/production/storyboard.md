@@ -21,14 +21,16 @@ Every selected image is assigned once. The end card uses the repository's origin
 
 ## Visual direction
 
-The second pass moves away from a fixed text-column layout. It uses larger, more varied photo placements that occupy the canvas, with paper panels crossing the composition rather than leaving large empty areas.
+The later art-direction pass moves beyond a fixed text-column layout. It uses larger, more varied photo placements that occupy the canvas, with layered paper panels, collected-print details, botanical linework, hand-drawn accents, and editorial typography rather than leaving large empty areas.
 
 - Warm paper, olive, clay, and toasted-cream palette.
 - Large scrapbook frames with captions, tape, slightly imperfect rotation, and soft layered shadows.
 - Scene-specific collage arrangements instead of one repeated template.
 - Spring-driven photo entrances from alternating directions, gentle floating motion, parallax camera drift, and slow camera push.
 - Animated hand-drawn paths, star marks, borders, stamps, and paper grain.
-- Larger editorial serif titles on movable paper panels.
+- Larger editorial serif titles on movable paper panels, paired with italic keepsake notes and oversized chapter numerals.
+- Layered photo backing sheets, washi tape, tiny archive tabs, and subtle circular seals.
+- Fine paper speckling, botanical flourishes, and hand-drawn starbursts that remain subordinate to the real photographs.
 - 0.3-second overlaps to keep the 45-second timeline continuous.
 - Separate 16:9 and 9:16 placements so the portrait master is composed intentionally.
 
