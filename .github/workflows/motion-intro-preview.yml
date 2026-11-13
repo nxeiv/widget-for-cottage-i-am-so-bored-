@@ -21,7 +21,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: motion-intro-preview-${{ github.ref }}
+  group: motion-intro-preview-${{ github.head_ref || github.ref_name }}
   cancel-in-progress: true
 
 jobs:
@@ -39,6 +39,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+
+      - name: Install FFmpeg for export and audio quality checks
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y ffmpeg
 
       - name: Install dependencies
         run: npm install --no-audit --no-fund
