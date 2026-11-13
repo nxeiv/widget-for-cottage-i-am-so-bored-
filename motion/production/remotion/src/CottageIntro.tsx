@@ -194,6 +194,160 @@ const Grain: React.FC<{ id: string; seed: number; opacity?: number }> = ({
   </AbsoluteFill>
 );
 
+
+const SceneOrnaments: React.FC<{
+  data: SceneData;
+  frame: number;
+  portrait: boolean;
+  index: number;
+}> = ({ data, frame, portrait, index }) => {
+  const { width, height, fps } = useVideoConfig();
+  const pulse = 0.5 + Math.sin(frame / Math.max(1, fps) * 1.35) * 0.5;
+  const draw = interpolate(frame, [0, fps * 1.1], [210, 0], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+  const id = "ornament-" + data.id;
+  const edge = portrait ? 31 : 48;
+  const vineX = width - (portrait ? 112 : 150);
+  const vineY = portrait ? height * 0.34 : height * 0.18;
+
+  return (
+    <AbsoluteFill style={{ pointerEvents: "none", zIndex: 2 }}>
+      <svg
+        viewBox={"0 0 " + width + " " + height}
+        width="100%"
+        height="100%"
+        style={{ position: "absolute", inset: 0, overflow: "visible" }}
+      >
+        <defs>
+          <pattern id={id + "-speckle"} width={portrait ? 37 : 43} height={portrait ? 37 : 43} patternUnits="userSpaceOnUse">
+            <circle cx="4" cy="8" r="1.15" fill={data.ink} opacity=".16" />
+            <circle cx="27" cy="23" r=".8" fill={data.ink} opacity=".11" />
+            <circle cx="15" cy="34" r=".65" fill={data.accent} opacity=".18" />
+          </pattern>
+          <linearGradient id={id + "-wash"} x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="#FFF8E9" stopOpacity=".36" />
+            <stop offset=".52" stopColor="#FFF8E9" stopOpacity="0" />
+            <stop offset="1" stopColor="#B97868" stopOpacity=".13" />
+          </linearGradient>
+        </defs>
+        <rect width={width} height={height} fill={"url(#" + id + "-speckle)"} opacity=".42" />
+        <rect width={width} height={height} fill={"url(#" + id + "-wash)"} />
+        <g fill="none" stroke={data.accent} strokeLinecap="round" strokeLinejoin="round">
+          <path
+            d={"M " + edge + " " + (edge + 92) + " C " + edge + " " + (edge + 38) + ", " + (edge + 24) + " " + edge + ", " + (edge + 92) + " " + edge}
+            strokeWidth="2.2" opacity=".6"
+          />
+          <path
+            d={"M " + (width - edge) + " " + (height - edge - 88) + " C " + (width - edge) + " " + (height - edge - 34) + ", " + (width - edge - 25) + " " + (height - edge) + ", " + (width - edge - 92) + " " + (height - edge)}
+            strokeWidth="2.2" opacity=".55"
+          />
+          <path
+            d={"M " + (edge + 11) + " " + (edge + 112) + " l 0 46 m -7 -7 l 7 7 l 7 -7"}
+            strokeWidth="1.5" opacity=".25"
+          />
+          <path
+            d={"M " + (width - edge - 12) + " " + (height - edge - 124) + " l 0 46 m -7 -7 l 7 7 l 7 -7"}
+            strokeWidth="1.5" opacity=".22"
+          />
+        </g>
+
+        <g
+          transform={"translate(" + vineX + " " + vineY + ") rotate(" + (Math.sin(frame / 42) * 2.2) + ")"}
+          fill="none"
+          stroke={data.accent}
+          strokeWidth={portrait ? 2.2 : 2.8}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          opacity=".52"
+        >
+          <path d="M0 150 C-20 100 18 72 -4 18 C-15 -6 -31 -17 -48 -22" strokeDasharray="210 210" strokeDashoffset={draw} />
+          <path d="M-7 103 C-42 91 -57 65 -51 43 C-27 46 -10 64 -7 103Z" />
+          <path d="M2 74 C34 61 46 38 38 18 C15 22 3 43 2 74Z" />
+          <path d="M-9 37 C-34 26 -41 6 -31 -11 C-13 -3 -5 16 -9 37Z" />
+          <path d="M-3 123 C24 113 37 94 28 77 C10 81 0 98 -3 123Z" />
+          <path d="M-43 -20 C-53 -36 -49 -49 -37 -56 C-24 -46 -28 -30 -43 -20Z" />
+        </g>
+
+        <g
+          transform={"translate(" + (width * (portrait ? 0.16 : 0.83)) + " " + (height * (portrait ? 0.49 : 0.76)) + ") rotate(" + (-8 + pulse * 4) + ")"}
+          fill="none"
+          stroke={data.accent}
+          strokeWidth="2.3"
+          strokeLinecap="round"
+          opacity=".5"
+        >
+          <path d="M0 -24 C5 -7 9 -5 25 0 C9 5 5 9 0 25 C-5 9 -9 5 -25 0 C-9 -5 -5 -9 0 -24Z" />
+          <path d="M0 -11 L0 11 M-11 0 L11 0" opacity=".42" />
+        </g>
+        <g
+          transform={"translate(" + (width * (portrait ? 0.82 : 0.12)) + " " + (height * (portrait ? 0.73 : 0.83)) + ")"}
+          fill="none"
+          stroke={data.accent}
+          strokeWidth="1.8"
+          opacity=".32"
+        >
+          <circle r={portrait ? 24 : 31} strokeDasharray="2 8" />
+          <circle r={portrait ? 15 : 20} />
+          <path d="M-7 0 Q0 -8 7 0 Q0 8 -7 0Z" />
+        </g>
+      </svg>
+
+      <div style={{
+        position: "absolute",
+        left: portrait ? 48 : 76,
+        top: portrait ? 66 : 68,
+        display: "flex",
+        alignItems: "center",
+        gap: portrait ? 9 : 12,
+        color: data.accent,
+        fontFamily: "Arial, sans-serif",
+        fontSize: portrait ? 10 : 13,
+        fontWeight: 800,
+        letterSpacing: ".22em",
+        opacity: .84,
+        textTransform: "uppercase",
+      }}>
+        <span style={{ width: portrait ? 23 : 34, height: 1, background: data.accent }} />
+        LITTLE THINGS, KEPT CLOSE
+      </div>
+
+      <div style={{
+        position: "absolute",
+        right: portrait ? 45 : 72,
+        top: portrait ? 66 : 68,
+        color: data.accent,
+        opacity: .72,
+        fontFamily: "Georgia, serif",
+        fontSize: portrait ? 16 : 21,
+        fontStyle: "italic",
+        letterSpacing: ".04em",
+        transform: "rotate(3deg)",
+      }}>
+        no. 0{index + 1}
+      </div>
+
+      <div style={{
+        position: "absolute",
+        left: portrait ? 46 : 74,
+        bottom: portrait ? 76 : 67,
+        display: "flex",
+        alignItems: "center",
+        gap: 8,
+        opacity: .7,
+        color: data.accent,
+        fontFamily: "Georgia, serif",
+        fontSize: portrait ? 12 : 15,
+        fontStyle: "italic",
+      }}>
+        <span style={{ width: portrait ? 24 : 38, height: 1, background: data.accent }} />
+        a little memory from our corner
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 const PhotoCard: React.FC<{
   photo: PhotoSpec;
   index: number;
@@ -233,8 +387,17 @@ const PhotoCard: React.FC<{
       zIndex: 3 + index,
     }}>
       <div style={{
+        position: "absolute", inset: 0,
+        background: index % 2 === 0 ? "#E8D9C5" : "#E2D2BF",
+        transform: "translate(7px,9px) rotate(" + (index % 2 === 0 ? 1.4 : -1.6) + "deg)",
+        boxShadow: "0 18px 34px rgba(40,29,21,.16)",
+        zIndex: 0,
+      }} />
+      <div style={{
+        position: "relative", zIndex: 1,
         width: "100%", height: "100%", overflow: "hidden",
         background: "#E8DCCB", border: "1px solid rgba(79,58,42,.12)",
+        boxShadow: "inset 0 0 0 4px rgba(255,255,255,.25)",
       }}>
         <Img src={staticFile(photo.src)} style={{
           width: "100%", height: "100%", display: "block",
@@ -242,24 +405,45 @@ const PhotoCard: React.FC<{
           padding: photo.contain ? "8%" : 0,
           boxSizing: "border-box",
           background: photo.contain ? "#EADBC8" : "#D8C8B5",
-          filter: "saturate(1.07) contrast(1.015)",
+          filter: "saturate(1.08) contrast(1.025) sepia(.035)",
         }} />
       </div>
       <div style={{
         position: "absolute", left: portrait ? 14 : 19, right: portrait ? 12 : 17,
-        bottom: portrait ? 9 : 12, height: portrait ? 24 : 28,
+        bottom: portrait ? 9 : 12, height: portrait ? 24 : 28, zIndex: 2,
         overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis",
         color: "#655044", fontFamily: "Georgia, 'Times New Roman', serif",
         fontSize: portrait ? 15 : 18, fontStyle: "italic",
         lineHeight: portrait ? "24px" : "28px",
       }}>{photo.label}</div>
       <div style={{
-        position: "absolute", left: "36%", top: -10,
-        width: portrait ? 88 : 118, height: portrait ? 19 : 23,
-        background: "rgba(214,177,119,.68)",
-        transform: "rotate(-4deg)",
-        boxShadow: "0 2px 4px rgba(65,46,30,.08)",
-      }} />
+        position: "absolute", left: "34%", top: portrait ? -9 : -11,
+        width: portrait ? 92 : 126, height: portrait ? 19 : 25,
+        background: index % 2 === 0 ? "rgba(214,177,119,.78)" : "rgba(194,142,130,.62)",
+        transform: "rotate(" + (index % 2 === 0 ? -4 : 3) + "deg)",
+        boxShadow: "0 2px 5px rgba(65,46,30,.12)",
+        zIndex: 4,
+      }}>
+        <div style={{ position: "absolute", inset: "3px 7px", borderLeft: "1px solid rgba(255,255,255,.34)", borderRight: "1px solid rgba(255,255,255,.34)" }} />
+      </div>
+      <div style={{
+        position: "absolute", right: portrait ? 13 : 18, top: portrait ? 15 : 20,
+        width: portrait ? 27 : 34, height: portrait ? 27 : 34,
+        borderRadius: "50%", border: "1px solid rgba(129,91,68,.42)",
+        background: "rgba(255,248,235,.88)", color: "#8A6450",
+        display: "flex", alignItems: "center", justifyContent: "center",
+        fontFamily: "Georgia, serif", fontSize: portrait ? 13 : 16,
+        transform: "rotate(8deg)", zIndex: 5,
+        boxShadow: "0 2px 7px rgba(57,40,28,.12)",
+      }}>✳</div>
+      <div style={{
+        position: "absolute", left: portrait ? 13 : 18, top: portrait ? 15 : 20,
+        padding: portrait ? "4px 6px" : "5px 8px",
+        background: "rgba(255,248,235,.88)", border: "1px solid rgba(129,91,68,.20)",
+        color: "#886B58", fontFamily: "Arial, sans-serif",
+        fontSize: portrait ? 7 : 9, fontWeight: 800, letterSpacing: ".12em",
+        transform: "rotate(-2deg)", zIndex: 5,
+      }}>C★ ARCHIVE</div>
     </div>
   );
 };
@@ -311,7 +495,8 @@ const CopyPanel: React.FC<{
   data: SceneData;
   portrait: boolean;
   frame: number;
-}> = ({ data, portrait, frame }) => {
+  index: number;
+}> = ({ data, portrait, frame, index }) => {
   const { fps, width, height } = useVideoConfig();
   const placement = portrait ? data.portraitCopy : data.landscapeCopy;
   const reveal = spring({
@@ -326,35 +511,80 @@ const CopyPanel: React.FC<{
       position: "absolute", left: placement.x * width, top: placement.y * height,
       width: placement.w * width, boxSizing: "border-box",
       padding: portrait ? "24px 25px 25px" : "28px 34px 30px",
-      background: data.paper,
+      background: "linear-gradient(145deg, " + data.paper + " 0%, #F2E5D3 100%)",
       border: "1px solid rgba(108,78,55,.24)",
-      boxShadow: "0 22px 58px rgba(31,23,17,.18), 0 3px 9px rgba(31,23,17,.08)",
-      borderRadius: 5,
+      boxShadow: "0 24px 64px rgba(31,23,17,.22), 0 4px 12px rgba(31,23,17,.09), inset 0 0 0 5px rgba(255,255,255,.32)",
+      borderRadius: 4,
       opacity: reveal,
+      overflow: "visible",
       transform: "translateY(" + ((1 - reveal) * 52) + "px) rotate(" +
         (data.panelTilt + (1 - reveal) * 4) + "deg) scale(" + (0.94 + reveal * 0.06) + ")",
       zIndex: 12,
     }}>
       <div style={{
-        fontFamily: "Arial, sans-serif", fontWeight: 800,
-        fontSize: portrait ? 14 : 16, letterSpacing: ".19em",
-        color: data.accent, marginBottom: portrait ? 15 : 18,
-      }}>{data.eyebrow}</div>
-      <div style={{
-        color: data.ink, fontFamily: "Georgia, 'Times New Roman', serif",
-        fontSize: titleSize, fontWeight: 700, lineHeight: 0.94,
-        letterSpacing: "-.055em", whiteSpace: "pre-line",
-      }}>{data.title}</div>
-      <div style={{
-        width: portrait ? 108 : 142, height: 4, marginTop: portrait ? 17 : 21,
-        borderRadius: 10, background: data.accent,
-        transform: "rotate(-1.4deg)",
+        position: "absolute", inset: portrait ? 8 : 10,
+        border: "1px solid rgba(132,101,75,.15)",
+        pointerEvents: "none",
       }} />
       <div style={{
-        marginTop: portrait ? 15 : 19,
-        fontFamily: "Arial, sans-serif", fontSize: portrait ? 19 : 22,
-        lineHeight: 1.42, color: "#6E5B4E", maxWidth: "96%",
+        position: "absolute", right: portrait ? 17 : 22, top: portrait ? 7 : 10,
+        color: data.accent, opacity: .10,
+        fontFamily: "Georgia, serif", fontWeight: 700,
+        fontSize: portrait ? 76 : 112, lineHeight: 1,
+        letterSpacing: "-.08em", pointerEvents: "none",
+      }}>0{index + 1}</div>
+      <div style={{
+        position: "absolute", top: -11, left: portrait ? "38%" : "42%",
+        width: portrait ? 92 : 132, height: portrait ? 19 : 24,
+        background: "rgba(213,178,132,.72)",
+        transform: "rotate(-2.5deg)",
+        boxShadow: "0 2px 6px rgba(55,38,25,.12)",
+      }} />
+      <div style={{
+        position: "relative",
+        display: "flex", alignItems: "center", gap: 10,
+        fontFamily: "Arial, sans-serif", fontWeight: 800,
+        fontSize: portrait ? 12 : 14, letterSpacing: ".19em",
+        color: data.accent, marginBottom: portrait ? 15 : 18,
+        textTransform: "uppercase",
+      }}>
+        <span style={{
+          width: portrait ? 24 : 32, height: portrait ? 24 : 32,
+          border: "1px solid " + data.accent, borderRadius: "50%",
+          display: "inline-flex", alignItems: "center", justifyContent: "center",
+          fontFamily: "Georgia, serif", fontSize: portrait ? 13 : 16,
+          transform: "rotate(-9deg)",
+        }}>✳</span>
+        {data.eyebrow}
+      </div>
+      <div style={{
+        position: "relative",
+        color: data.ink, fontFamily: "Georgia, 'Times New Roman', serif",
+        fontSize: titleSize, fontWeight: 700, lineHeight: 0.94,
+        letterSpacing: "-.06em", whiteSpace: "pre-line",
+        textShadow: "0 1px 0 rgba(255,255,255,.42)",
+      }}>{data.title}</div>
+      <svg width={portrait ? 146 : 190} height="22" viewBox="0 0 190 22" style={{ display: "block", marginTop: portrait ? 14 : 18, overflow: "visible" }}>
+        <path d="M3 13 C36 5 69 18 102 10 S158 7 186 11" fill="none" stroke={data.accent} strokeWidth="3" strokeLinecap="round" />
+        <path d="M12 19 C50 14 91 21 134 15" fill="none" stroke={data.accent} strokeWidth="1" opacity=".45" strokeLinecap="round" />
+      </svg>
+      <div style={{
+        marginTop: portrait ? 13 : 17,
+        fontFamily: "Georgia, 'Times New Roman', serif", fontStyle: "italic",
+        fontSize: portrait ? 18 : 22,
+        lineHeight: 1.36, color: "#6E5B4E", maxWidth: "96%",
+        position: "relative",
       }}>{data.note}</div>
+      <div style={{
+        display: "flex", alignItems: "center", gap: 9,
+        marginTop: portrait ? 18 : 22,
+        color: data.accent, opacity: .78,
+        fontFamily: "Arial, sans-serif", fontSize: portrait ? 9 : 11,
+        fontWeight: 800, letterSpacing: ".19em",
+      }}>
+        <span style={{ width: portrait ? 25 : 36, height: 1, background: data.accent }} />
+        THE COTTAGE★ · A LITTLE ARCHIVE
+      </div>
     </div>
   );
 };
@@ -430,7 +660,7 @@ const ScrapbookChrome: React.FC<{
   );
 };
 
-const Scene: React.FC<{ data: SceneData; portrait: boolean }> = ({ data, portrait }) => {
+const Scene: React.FC<{ data: SceneData; portrait: boolean; index: number }> = ({ data, portrait, index }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const transitionFrames = Math.round(fps * 0.3);
@@ -455,12 +685,13 @@ const Scene: React.FC<{ data: SceneData; portrait: boolean }> = ({ data, portrai
         transform: "translate(" + cameraX + "px," + cameraY + "px) scale(" + camera + ")",
       }}>
         <ScrapbookChrome data={data} frame={frame} portrait={portrait} />
+        <SceneOrnaments data={data} frame={frame} portrait={portrait} index={index} />
         {data.photos.map((photo, index) => (
           <PhotoCard key={photo.src} photo={photo} index={index}
             portrait={portrait} frame={frame} />
         ))}
         <Scribbles accent={data.accent} frame={frame} portrait={portrait} />
-        <CopyPanel data={data} portrait={portrait} frame={frame} />
+        <CopyPanel data={data} portrait={portrait} frame={frame} index={index} />
       </AbsoluteFill>
       <Grain id={data.id} seed={Math.floor(frame / 3)} opacity={0.13} />
     </AbsoluteFill>
@@ -476,12 +707,12 @@ export const CottageIntro: React.FC<IntroProps> = ({ portrait }) => {
         src={staticFile("motion/production/remotion/public/audio/cottage-original-bed.wav")}
         volume={0.68}
       />
-      {scenes.map((data) => {
+      {scenes.map((data, index) => {
         const start = from;
         from += data.seconds * fps - Math.round(fps * 0.3);
         return (
           <Sequence key={data.id} from={start} durationInFrames={data.seconds * fps} name={data.id}>
-            <Scene data={data} portrait={portrait} />
+            <Scene data={data} portrait={portrait} index={index} />
           </Sequence>
         );
       })}
