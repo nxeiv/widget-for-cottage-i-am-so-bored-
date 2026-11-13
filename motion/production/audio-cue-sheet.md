@@ -1,6 +1,6 @@
 # The Cottage★ — Original audio cue sheet
 
-**Status:** First original instrumental bed generated and integrated into the Remotion composition. Final listening review is still pending.  
+**Status:** Original instrumental bed generated and integrated into all four Remotion compositions. The workflow also packages a standalone WAV master and MP3 listening copy. Final listening review is still pending.  
 **Source:** `scripts/generate-audio.mjs`  
 **Output:** `public/audio/cottage-original-bed.wav` (generated during the render workflow; not committed as a large binary asset).
 
@@ -38,6 +38,8 @@ The soundtrack is generated from original synthesized tones. It uses no commerci
 - Conservative output peak with a soft fade at both ends.
 - Integrated at a reduced volume in the video composition.
 - The audio is recreated from source code on each CI run, so no generated WAV binary needs to be checked into Git.
+- CI packages the WAV master and a 192 kbps MP3 copy separately from the video renders.
+- CI checks the audio stream in every MP4, audio format, 45-second duration, and peak level; the result is saved in `out/technical-QA.txt` and included in the downloadable artifact.
 
 ## Review checklist
 
