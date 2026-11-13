@@ -45,9 +45,10 @@ Render storyboard stills:
 
 ```bash
 npm run render:stills
+npm run deliver:prepare
 ```
 
-Rendered files are written to `out/`, which is ignored by Git.
+Rendered files are written to `out/`, which is ignored by Git. The final preparation step verifies all four MP4s (resolution, frame rate, duration, and embedded AAC audio), copies the original PCM soundtrack into `out/`, creates a 192 kbps MP3 listening copy, checks the audio format and peak level, and writes `out/technical-QA.txt`.
 
 ## Media
 
@@ -77,6 +78,15 @@ The incomplete `season 6 world wide shot.png` upload is intentionally not refere
 
 The repository workflow installs the toolchain, generates the original soundtrack, type-checks the source, discovers all four compositions, renders nine storyboard stills, and exports both 120 fps masters plus both 60 fps compatibility versions. The workflow uploads the generated stills and MP4s as a GitHub Actions artifact.
 
+## Audio deliverables
+
+The workflow packages two standalone versions of the original soundtrack alongside the video files:
+
+- `cottage-original-soundtrack.wav` — 16-bit PCM, 44.1 kHz stereo master.
+- `cottage-original-soundtrack.mp3` — 192 kbps, 44.1 kHz stereo listening copy.
+
+Both versions are generated from the same original source script. The MP4 exports also contain the soundtrack as AAC audio. The workflow includes a technical report, but that does not replace a human listening review.
+
 ## Production status
 
 - [x] Landscape and portrait compositions at 120 fps
@@ -87,7 +97,9 @@ The repository workflow installs the toolchain, generates the original soundtrac
 - [x] Larger scrapbook layouts, animated photo entrances, and expanded design details
 - [x] Original synthesized instrumental generated and added to the composition
 - [x] Render commands and automated workflow
-- [ ] Run CI and inspect the generated previews and MP4 exports
+- [x] Run CI: source validation, storyboard renders, and four MP4 export targets
+- [x] Package standalone WAV and MP3 soundtrack deliverables and technical QA report
+- [ ] Inspect the generated previews and MP4 exports
 - [ ] Review the soundtrack on headphones and phone speakers
 - [ ] Approve final photo crops and complete final playback review
 
