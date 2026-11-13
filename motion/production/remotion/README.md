@@ -76,7 +76,7 @@ The incomplete `season 6 world wide shot.png` upload is intentionally not refere
 
 ## Automated checks
 
-The repository workflow installs the toolchain, generates the original soundtrack, type-checks the source, discovers all four compositions, renders nine storyboard stills, and exports both 120 fps masters plus both 60 fps compatibility versions. The workflow uploads the generated stills and MP4s as a GitHub Actions artifact.
+The repository workflow installs the toolchain, generates the original soundtrack, type-checks the source, discovers all four compositions, renders nine storyboard stills, and exports both 120 fps masters plus both 60 fps compatibility versions. The artifact contains the nine PNG stills, four MP4 exports, standalone WAV and MP3 soundtrack files, and `technical-QA.txt`. The downloadable artifact is attached to the successful [Motion intro preview workflow](https://github.com/nxeiv/widget-for-cottage-i-am-so-bored-/actions/workflows/motion-intro-preview.yml).
 
 ## Audio deliverables
 
