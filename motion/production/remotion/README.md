@@ -88,6 +88,9 @@ The intention is abundant but calm: details should reward a closer look without 
 
 ## Automated checks
 
+The CI runner installs FFmpeg/FFprobe and ImageMagick. After rendering nine stills, it creates separate landscape and portrait contact sheets and publishes them as an early-review artifact before the longer MP4 exports begin.
+
+
 The repository workflow installs the toolchain, generates the original soundtrack, type-checks the source, discovers all four compositions, renders nine storyboard stills, and exports both 120 fps masters plus both 60 fps compatibility versions. The artifact contains the nine PNG stills, four MP4 exports, standalone WAV and MP3 soundtrack files, and `technical-QA.txt`. The downloadable artifact is attached to the successful [Motion intro preview workflow](https://github.com/nxeiv/widget-for-cottage-i-am-so-bored-/actions/workflows/motion-intro-preview.yml).
 
 ## Audio deliverables
