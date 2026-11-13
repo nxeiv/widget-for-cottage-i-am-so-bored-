@@ -63,6 +63,14 @@ jobs:
       - name: Render scene preview stills
         run: npm run render:stills
 
+      - name: Publish storyboard previews for early review
+        uses: actions/upload-artifact@v4
+        with:
+          name: cottage-motion-storyboard-preview
+          path: motion/production/remotion/out/*.png
+          if-no-files-found: error
+          retention-days: 14
+
       - name: Render final landscape master
         run: npm run render:landscape
 
