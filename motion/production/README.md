@@ -10,6 +10,9 @@ Visual language:
 - Warm paper, soft grain, gentle blur, imperfect framing, and little hand-drawn marks.
 - Real moments from the website's `Media/` folder; do not invent people, messages, or memories.
 - Natural pacing: let a photo breathe before moving on. Use restrained camera drift, small rotations, crossfades, and occasional quick playful cuts.
+- Collected-paper details: layered backing sheets, washi tape, tiny archive tabs, soft seals, double keylines, and pencil-like underlines.
+- Botanical line art, small chapter marks, warm paper speckling, and gentle ambient washes that remain behind the real photographs.
+- Editorial serif headlines paired with quiet, handwritten-feeling italic notes; keep the decorative layer expressive but never cluttered.
 - The Cottage★ is the home; the SMP is the backyard. Friendships stay central.
 
 Palette sampled from `cottage.css`:
