@@ -70,6 +70,9 @@ jobs:
       - name: Render 60 FPS portrait compatibility export
         run: npm run render:portrait:60
 
+      - name: Verify all exports and package standalone soundtrack
+        run: npm run deliver:prepare
+
       - name: Upload rendered deliverables
         if: always()
         uses: actions/upload-artifact@v4
@@ -78,5 +81,8 @@ jobs:
           path: |
             motion/production/remotion/out/*.png
             motion/production/remotion/out/*.mp4
-          if-no-files-found: warn
-          retention-days: 14
+            motion/production/remotion/out/*.wav
+            motion/production/remotion/out/*.mp3
+            motion/production/remotion/out/technical-QA.txt
+          if-no-files-found: error
+          retention-days: 30
