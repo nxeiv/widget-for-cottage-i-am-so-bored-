@@ -43,7 +43,7 @@ jobs:
       - name: Install FFmpeg for export and audio quality checks
         run: |
           sudo apt-get update
-          sudo apt-get install --no-install-recommends -y ffmpeg imagemagick
+          sudo apt-get install --no-install-recommends -y ffmpeg imagemagick fonts-dejavu-core
 
       - name: Install dependencies
         run: npm install --no-audit --no-fund
@@ -65,8 +65,8 @@ jobs:
 
       - name: Build landscape and portrait contact sheets
         run: |
-          montage out/01-opening.png out/02-familiar.png out/03-laugh.png out/04-together.png out/05-backyard.png out/06-memory.png out/07-ending.png -tile 2x -geometry '640x360>' -background '#F4EBDD' -gravity center -bordercolor '#E1D2BF' -border 8 out/storyboard-landscape-contact-sheet.png
-          montage out/portrait-opening.png out/portrait-backyard.png -tile 2x -geometry '360x640>' -background '#F4EBDD' -gravity center -bordercolor '#E1D2BF' -border 8 out/storyboard-portrait-contact-sheet.png
+          montage -font /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf out/01-opening.png out/02-familiar.png out/03-laugh.png out/04-together.png out/05-backyard.png out/06-memory.png out/07-ending.png -tile 2x -geometry '640x360>' -background '#F4EBDD' -gravity center -bordercolor '#E1D2BF' -border 8 out/storyboard-landscape-contact-sheet.png
+          montage -font /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf out/portrait-opening.png out/portrait-backyard.png -tile 2x -geometry '360x640>' -background '#F4EBDD' -gravity center -bordercolor '#E1D2BF' -border 8 out/storyboard-portrait-contact-sheet.png
 
       - name: Publish storyboard previews for early review
         uses: actions/upload-artifact@v4
