@@ -64,6 +64,18 @@ The Season 6 backyard and memory sequence includes:
 
 The incomplete `season 6 world wide shot.png` upload is intentionally not referenced.
 
+## Third art-direction pass: a little more magic
+
+The active composition now leans further into a collected, lived-in scrapbook rather than a simple stack of photo cards:
+
+- Fine paper speckling and a warm translucent wash sit behind the photographs.
+- Botanical linework, hand-drawn starbursts, tiny archive labels, corner flourishes, and a small scene index make each frame feel like a page in a keepsake book.
+- Photos have a second offset paper layer, warmer print treatment, washi tape, archive tabs, and little circular seals.
+- Copy panels use a double paper keyline, a faint oversized chapter numeral, a small emblem, a hand-drawn underline, and an editorial italic note.
+- The decorative frame is responsive to both 16:9 and 9:16 layouts and stays behind the important photographs and words.
+
+The intention is abundant but calm: details should reward a closer look without turning the film into a busy template or hiding the real memories.
+
 ## Motion and finishing
 
 - Larger, more varied scrapbook layouts that use more of the frame.
@@ -94,13 +106,13 @@ Both versions are generated from the same original source script. The MP4 export
 - [x] Seven-scene, 45-second structure
 - [x] Unique photo assignments with no repeated source images
 - [x] Original server icon used on the closing card
-- [x] Larger scrapbook layouts, animated photo entrances, and expanded design details
+- [x] Larger scrapbook layouts, animated photo entrances, expanded paper treatments, botanical flourishes, archive labels, seals, and editorial typography
 - [x] Original synthesized instrumental generated and added to the composition
 - [x] Render commands and automated workflow
 - [x] Run CI: source validation, storyboard renders, and four MP4 export targets
 - [x] Package standalone WAV and MP3 soundtrack deliverables and technical QA report
-- [ ] Inspect the generated previews and MP4 exports
+- [ ] Inspect the third-pass generated previews and MP4 exports
 - [ ] Review the soundtrack on headphones and phone speakers
 - [ ] Approve final photo crops and complete final playback review
 
-The second-pass render is not considered final until CI succeeds and the footage and soundtrack have been reviewed.
+The third-pass render is not considered final until CI succeeds and the footage and soundtrack have been reviewed.
