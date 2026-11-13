@@ -292,6 +292,65 @@ const SceneOrnaments: React.FC<{
           <circle r={portrait ? 15 : 20} />
           <path d="M-7 0 Q0 -8 7 0 Q0 8 -7 0Z" />
         </g>
+
+        {data.id === "opening" && (
+          <g transform={"translate(" + (width * (portrait ? 0.80 : 0.18)) + " " + (height * (portrait ? 0.88 : 0.77)) + ") scale(" + (portrait ? 0.62 : 1) + ")"} fill="none" stroke={data.accent} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" opacity=".56">
+            <path d="M0 34 L48 -4 L96 34 M12 25 V82 H84 V25" />
+            <path d="M39 82 V48 H58 V82 M24 43 H35 V54 H24Z M63 43 H74 V54 H63Z" />
+            <path d="M105 0 C120 -15 136 -15 148 0 M120 -18 l0 -13 M146 -11 l10 -9" strokeWidth="2" />
+            <path d="M148 35 l4 10 10 4 -10 4 -4 10 -4 -10 -10 -4 10 -4Z" strokeWidth="2" />
+          </g>
+        )}
+        {data.id === "familiar" && (
+          <g transform={"translate(" + (width * (portrait ? 0.72 : 0.72)) + " " + (height * (portrait ? 0.49 : 0.76)) + ")"} fill="none" stroke={data.accent} strokeWidth="2.5" strokeLinecap="round" opacity=".5">
+            <path d="M-110 30 C-58 -28 -18 66 34 6 S100 -25 132 21" strokeDasharray="3 12" />
+            <circle cx="-110" cy="30" r="8" fill={data.paper} />
+            <circle cx="34" cy="6" r="8" fill={data.paper} />
+            <circle cx="132" cy="21" r="8" fill={data.paper} />
+            <path d="M-3 -45 l7 17 18 7 -18 7 -7 18 -7 -18 -18 -7 18 -7Z" strokeWidth="2" />
+          </g>
+        )}
+        {data.id === "laugh" && (
+          <g transform={"translate(" + (width * (portrait ? 0.80 : 0.12)) + " " + (height * (portrait ? 0.82 : 0.77)) + ") scale(" + (portrait ? 0.72 : 1) + ")"} fill="none" stroke={data.accent} strokeWidth="3" strokeLinecap="round" opacity=".55">
+            <path d="M0 -45 l0 18 M0 28 l0 18 M-45 0 h18 M28 0 h18 M-31 -31 l13 13 M18 18 l13 13 M31 -31 L18 -18 M-18 18 l-13 13" />
+            <path d="M64 -16 C83 -37 97 -34 104 -19 C112 -3 94 5 80 -2 C69 -8 57 1 65 14 C76 31 98 30 111 17" strokeWidth="2.5" />
+            <circle cx="128" cy="-27" r="4" fill={data.accent} />
+            <circle cx="145" cy="10" r="3" fill={data.accent} />
+          </g>
+        )}
+        {data.id === "together" && (
+          <g transform={"translate(" + (width * (portrait ? 0.80 : 0.16)) + " " + (height * (portrait ? 0.83 : 0.80)) + ") scale(" + (portrait ? 0.70 : 1) + ")"} fill="none" stroke={data.accent} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" opacity=".56">
+            <path d="M-35 0 H35 L27 54 H-27Z M35 10 H45 C65 10 65 37 39 37" />
+            <path d="M-17 -13 C-30 -31 -3 -36 -14 -57 M10 -13 C-2 -31 25 -37 15 -59" strokeWidth="2.3" />
+            <path d="M-50 64 H56" strokeWidth="2" />
+            <path d="M-49 54 q-10 13 0 26 M56 54 q10 13 0 26" strokeWidth="2" />
+          </g>
+        )}
+        {data.id === "backyard" && (
+          <g transform={"translate(" + (width * (portrait ? 0.80 : 0.14)) + " " + (height * (portrait ? 0.84 : 0.80)) + ") scale(" + (portrait ? 0.68 : 1) + ")"} fill="none" stroke={data.accent} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" opacity=".56">
+            <path d="M-80 48 Q-38 4 0 48 Q43 -3 88 48" />
+            <path d="M-80 61 Q-30 28 0 61 Q44 21 88 61" strokeWidth="1.8" />
+            <path d="M0 38 C-12 11 -3 -10 17 -29 M6 20 C-15 20 -30 8 -29 -9 C-10 -14 1 -1 6 20Z M10 2 C26 1 39 -10 38 -24 C22 -27 11 -14 10 2Z" />
+            <circle cx="93" cy="-14" r="17" />
+            <path d="M93 -41 v-9 M93 4 v9 M66 -14 h-9 M129 -14 h-9 M74 -33 l-7 -7 M112 -33 l7 -7" strokeWidth="2" />
+          </g>
+        )}
+        {data.id === "memory" && (
+          <g transform={"translate(" + (width * (portrait ? 0.80 : 0.83)) + " " + (height * (portrait ? 0.84 : 0.78)) + ") scale(" + (portrait ? 0.66 : 1) + ")"} fill="none" stroke={data.accent} strokeWidth="2.7" strokeLinecap="round" strokeLinejoin="round" opacity=".55">
+            <path d="M0 -47 C-25 -47 -39 -27 -39 -6 C-39 22 0 55 0 55 S39 22 39 -6 C39 -27 25 -47 0 -47Z" />
+            <circle cy="-8" r="12" />
+            <path d="M56 -35 C76 -17 82 0 66 16 M66 16 l-13 -2 M66 16 l4 -13 M-59 48 C-43 29 -28 29 -16 43" strokeDasharray="4 8" />
+            <path d="M-79 -39 l5 12 13 5 -13 5 -5 12 -5 -12 -13 -5 13 -5Z" strokeWidth="2" />
+          </g>
+        )}
+        {data.id === "end" && (
+          <g transform={"translate(" + (width * (portrait ? 0.80 : 0.17)) + " " + (height * (portrait ? 0.85 : 0.80)) + ") scale(" + (portrait ? 0.66 : 1) + ")"} fill="none" stroke={data.accent} strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round" opacity=".58">
+            <path d="M-74 0 Q-112 -34 -132 -4 Q-112 26 -74 0Z M74 0 Q112 -34 132 -4 Q112 26 74 0Z" />
+            <path d="M-74 0 Q0 -56 74 0 Q0 56 -74 0Z" />
+            <path d="M0 -29 l9 19 21 3 -15 14 4 21 -19 -10 -19 10 4 -21 -15 -14 21 -3Z" fill={data.paper} />
+            <path d="M-114 46 Q-56 78 0 60 Q56 78 114 46" strokeWidth="2" />
+          </g>
+        )}
       </svg>
 
       <div style={{
@@ -310,7 +369,15 @@ const SceneOrnaments: React.FC<{
         textTransform: "uppercase",
       }}>
         <span style={{ width: portrait ? 23 : 34, height: 1, background: data.accent }} />
-        LITTLE THINGS, KEPT CLOSE
+        {({
+          opening: "A PLACE TO LAND",
+          familiar: "THE FIRST HELLOS",
+          laugh: "THE GOOD KIND OF CHAOS",
+          together: "SLOW DAYS, SOFT NIGHTS",
+          backyard: "A WORLD OF OUR OWN",
+          memory: "SAVED FOR LATER",
+          end: "ALWAYS A LITTLE HOME",
+        } as Record<string, string>)[data.id]}
       </div>
 
       <div style={{
@@ -342,7 +409,15 @@ const SceneOrnaments: React.FC<{
         fontStyle: "italic",
       }}>
         <span style={{ width: portrait ? 24 : 38, height: 1, background: data.accent }} />
-        a little memory from our corner
+        {({
+          opening: "leave a light on",
+          familiar: "somehow, we found each other",
+          laugh: "not pictured: the group chat",
+          together: "no plans. no rush.",
+          backyard: "just one more sunset",
+          memory: "kept in the little archive",
+          end: "come as you are, stay awhile",
+        } as Record<string, string>)[data.id]}
       </div>
     </AbsoluteFill>
   );
