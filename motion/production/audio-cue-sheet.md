@@ -1,45 +1,48 @@
 # The Cottage★ — Original audio cue sheet
 
-**Status:** direction only — no audio has been generated or added to the video yet.  
-**Target:** original, rights-safe sound bed and effects created specifically for this film.
+**Status:** First original instrumental bed generated and integrated into the Remotion composition. Final listening review is still pending.  
+**Source:** `scripts/generate-audio.mjs`  
+**Output:** `public/audio/cottage-original-bed.wav` (generated during the render workflow; not committed as a large binary asset).
 
-## Overall sound
+## Sound direction
 
-Keep the film intimate rather than trailer-like. The sound should feel like remembering a good evening with friends: warm, slightly imperfect, gentle, and never louder than the photographs or words.
+The film should feel like remembering a good evening with friends: warm, slightly imperfect, gentle, and never louder than the photographs or words. It should not sound like a trailer or a corporate promo.
 
-Suggested original palette:
-- A simple, warm instrumental motif with soft keys or plucked tones.
-- A quiet sustained texture underneath, with natural dynamics rather than a constant cinematic swell.
-- Very restrained room tone and soft environmental detail.
-- A few tactile paper, tape, or camera-handling accents, used sparingly.
+The soundtrack is generated from original synthesized tones. It uses no commercial recording, sampled dialogue, or identifiable voice recordings.
 
-Do not use recognizable copyrighted songs, sampled dialogue, or identifiable voice recordings without permission.
+## Arrangement
+
+- A slow, sustained chord bed creates the warm foundation.
+- A simple plucked-note motif provides a little movement without becoming busy.
+- A very low tonal layer helps the mix feel present on smaller speakers.
+- Small, original soft clicks and high notes mark the scene changes.
+- The first and last moments fade gently.
+- The Remotion composition includes the same soundtrack in landscape, portrait, 120 fps, and 60 fps exports.
 
 ## Cue map
 
-| Time | Scene | Suggested cue |
+| Approx. time | Scene | Cue |
 | --- | --- | --- |
-| 00:00 | Opening | Soft room tone; a small tactile opening sound as the seal appears. |
-| 00:04.7 | Familiar | Introduce the main musical motif quietly; keep the transition gentle. |
-| 00:10.4 | Laugh | Add one light rhythmic accent; avoid exaggerated comedy effects. |
-| 00:16.1 | Together | Pull back the rhythm and leave a little breathing room. |
-| 00:22.8 | Backyard | Add a very subtle outdoor ambience layer under the existing music. |
-| 00:30.5 | Memory | Let the motif become simpler and more reflective. |
-| 00:37.2 | Home | Resolve the motif; leave a short, natural tail after the final line. |
+| 00:00 | Opening | Chord bed fades in; the motif waits before entering. |
+| 00:04.7 | Familiar | The plucked motif becomes audible. |
+| 00:10.4 | Laugh | Keep the melody moving, with a quiet transition tick. |
+| 00:16.1 | Together | The pad carries the scene; keep the rhythm unhurried. |
+| 00:22.8 | Backyard | Let the same motif continue; avoid turning the SMP into an action trailer. |
+| 00:30.5 | Memory | Bring the motif forward gently, with room around the notes. |
+| 00:37.2 | Home | Resolve toward the final chord and leave a soft tail. |
 
-## Mix targets
+## Technical notes
 
-- Keep dialogue-free music comfortably below the visual message; do not master aggressively.
-- Avoid clipping and abrupt cutoffs.
-- Use short fades at the head and tail.
-- Check mono compatibility and phone-speaker playback.
-- Keep sound effects sparse and quiet; they should add texture, not announce every transition.
+- 44.1 kHz, 16-bit, stereo PCM WAV.
+- 45 seconds, matching the master composition.
+- Conservative output peak with a soft fade at both ends.
+- Integrated at a reduced volume in the video composition.
+- The audio is recreated from source code on each CI run, so no generated WAV binary needs to be checked into Git.
 
-## Approval checklist
+## Review checklist
 
-- [ ] Create an original instrumental bed.
-- [ ] Create original tactile transition sounds.
-- [ ] Create or record non-identifying ambient textures.
-- [ ] Confirm all contributors have approved any recorded material.
-- [ ] Mix and review on headphones, phone speakers, and mono playback.
-- [ ] Add the approved audio to both aspect ratios and all frame-rate exports.
+- [ ] Listen to the rendered master from start to finish.
+- [ ] Check the mix on headphones and phone speakers.
+- [ ] Check mono compatibility.
+- [ ] Confirm the music does not mask any intended future voiceover.
+- [ ] Adjust the music level or motif only after listening to the actual render.

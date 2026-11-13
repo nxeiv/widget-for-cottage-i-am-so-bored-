@@ -1,6 +1,6 @@
 # The Cottage★ motion introduction
 
-A 45-second, photo-led introduction to The Cottage★. The edit is built around real community memories: the people first, with the SMP as the backyard.
+A 45-second, photo-led introduction to The Cottage★. The film is built around real community memories: the people first, with the SMP as the backyard.
 
 ## Compositions
 
@@ -11,7 +11,7 @@ A 45-second, photo-led introduction to The Cottage★. The edit is built around 
 | `CottageIntro60` | 1920 × 1080 | 60 fps | 45 seconds |
 | `CottageIntroPortrait60` | 1080 × 1920 | 60 fps | 45 seconds |
 
-The 120 fps versions are the high-frame-rate masters. The 60 fps versions are compatibility exports for platforms and players that cap frame rate at 60 fps.
+The 120 fps versions are the high-frame-rate masters. The 60 fps versions are compatibility exports.
 
 ## Run locally
 
@@ -19,10 +19,13 @@ Requires Node.js 20+ and npm. From this directory:
 
 ```bash
 npm install
+npm run audio:generate
 npm run typecheck
 npm run compositions
 npm run studio
 ```
+
+Generate the original soundtrack before rendering. It creates `public/audio/cottage-original-bed.wav` from the source in `scripts/generate-audio.mjs`.
 
 Render the high-frame-rate masters:
 
@@ -48,41 +51,44 @@ Rendered files are written to `out/`, which is ignored by Git.
 
 ## Media
 
-The project reads photographs from the repository's existing `Media/` directory. No duplicate media folder is needed.
+The project reads photographs from the repository's existing `Media/` directory. It does not make duplicate copies. Each selected image appears once in the sequence. The final end card uses the original `Media/server pfp.jpg`.
 
-The Season 6 backyard montage currently includes:
+The Season 6 backyard and memory sequence includes:
 
 - `far zoom shot of 2 players sitting near a cherry tree s6.png`
 - `wide shot of background with 2 players fishing in a brige s6.png`
 - `SMP 7.png`
+- `SMP 8.png`
+- `SMP tiny map.png`
 
 The incomplete `season 6 world wide shot.png` upload is intentionally not referenced.
 
 ## Motion and finishing
 
-- 0.3-second crossfades between scenes, with no intentional black-frame gaps
-- restrained title rise and fade-in
-- gentle camera push and low-amplitude photo drift
-- imperfect scrapbook framing, warm paper colors, tape accents, and animated monochrome grain
-- the seven-scene sequence is documented in [the production storyboard](../storyboard.md)
-- the original sound direction is documented in [the audio cue sheet](../audio-cue-sheet.md)
+- Larger, more varied scrapbook layouts that use more of the frame.
+- Spring-driven photo entrances, gentle floating, and a slow parallax camera.
+- Warm paper, olive, and clay colors; tape, captions, stamps, drawn marks, and animated grain.
+- 0.3-second scene overlaps with no intentional black-frame gaps.
+- Original synthesized instrumental soundtrack generated during CI and included in all four exports.
+- The seven-scene sequence is documented in [the production storyboard](../storyboard.md).
+- Sound details and review notes are documented in [the audio cue sheet](../audio-cue-sheet.md).
 
 ## Automated checks
 
-The repository workflow installs the toolchain, type-checks the source, discovers all four compositions, renders nine storyboard stills, and exports both 120 fps masters plus both 60 fps compatibility versions. The workflow uploads the generated stills and MP4s as a GitHub Actions artifact.
+The repository workflow installs the toolchain, generates the original soundtrack, type-checks the source, discovers all four compositions, renders nine storyboard stills, and exports both 120 fps masters plus both 60 fps compatibility versions. The workflow uploads the generated stills and MP4s as a GitHub Actions artifact.
 
 ## Production status
 
 - [x] Landscape and portrait compositions at 120 fps
 - [x] Landscape and portrait compatibility compositions at 60 fps
 - [x] Seven-scene, 45-second structure
-- [x] Existing community and SMP media references
-- [x] Two available Season 6 images integrated into the backyard scene
-- [x] Crossfades, text reveal, gentle photo movement, and animated grain
+- [x] Unique photo assignments with no repeated source images
+- [x] Original server icon used on the closing card
+- [x] Larger scrapbook layouts, animated photo entrances, and expanded design details
+- [x] Original synthesized instrumental generated and added to the composition
 - [x] Render commands and automated workflow
 - [ ] Run CI and inspect the generated previews and MP4 exports
-- [ ] Review all original photos at full resolution and approve final crops
-- [ ] Add original sound design and music
-- [ ] Complete final playback and platform compatibility review
+- [ ] Review the soundtrack on headphones and phone speakers
+- [ ] Approve final photo crops and complete final playback review
 
-No final render is claimed until the automated render succeeds and the footage has been reviewed.
+The second-pass render is not considered final until CI succeeds and the footage and soundtrack have been reviewed.
