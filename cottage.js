@@ -182,6 +182,99 @@
   window.addEventListener("online", setOfflineState);
   window.addEventListener("offline", setOfflineState);
 
+  // Public status is fetched from Main Bot's read-only API. No server address
+  // or port is included in this page or sent from the browser.
+  const statusCard = document.querySelector("[data-minecraft-status]");
+  if (statusCard) {
+    const statusEndpoint = statusCard.dataset.statusApi;
+    const statusLabel = statusCard.querySelector("[data-status-label]");
+    const statusTitle = statusCard.querySelector("[data-status-title]");
+    const statusMessage = statusCard.querySelector("[data-status-message]");
+    const statusPlayers = statusCard.querySelector("[data-status-players]");
+    const statusVersion = statusCard.querySelector("[data-status-version]");
+    const statusChecked = statusCard.querySelector("[data-status-checked]");
+    const statusWake = statusCard.querySelector("[data-status-wake]");
+
+    const showStatusUnavailable = (message) => {
+      statusCard.dataset.statusState = "unknown";
+      statusLabel.textContent = "STATUS UNAVAILABLE";
+      statusTitle.textContent = "The backyard's status is out of reach.";
+      statusMessage.textContent = message || "Live status is temporarily unavailable. Please check again shortly.";
+      statusPlayers.textContent = "—";
+      statusVersion.textContent = "—";
+      statusChecked.textContent = "—";
+      statusWake.hidden = true;
+    };
+
+    const renderServerStatus = (status) => {
+      const state = status && status.state;
+      const checkedAt = status && status.checkedAt ? new Date(status.checkedAt) : null;
+      const isFresh = checkedAt && Number.isFinite(checkedAt.getTime()) &&
+        Date.now() - checkedAt.getTime() <= 120000;
+
+      if (!isFresh) {
+        showStatusUnavailable("The latest check is missing or out of date, so this card won't guess whether the server is online.");
+        return;
+      }
+
+      statusCard.dataset.statusState = state || "unknown";
+      statusChecked.textContent = checkedAt.toLocaleTimeString([], { hour:"numeric", minute:"2-digit" });
+
+      if (state === "online" && status.online === true) {
+        statusLabel.textContent = "ONLINE";
+        statusTitle.textContent = "The backyard is open.";
+        statusMessage.textContent = "The server is responding and ready for friends.";
+        const players = Number.isInteger(status.players) && status.players >= 0 ? status.players : null;
+        const maximum = Number.isInteger(status.maxPlayers) && status.maxPlayers >= 0 ? status.maxPlayers : null;
+        statusPlayers.textContent = players === null ? "—" : (maximum === null ? String(players) : players + " / " + maximum);
+        statusVersion.textContent = typeof status.version === "string" && status.version ? status.version : "—";
+        statusWake.hidden = true;
+        return;
+      }
+
+      if (state === "unavailable") {
+        statusLabel.textContent = "NOT RESPONDING";
+        statusTitle.textContent = "The backyard isn't responding.";
+        statusMessage.textContent = "The server may be sleeping or temporarily unavailable. You can check the joining announcement and try the wake page.";
+        statusPlayers.textContent = "—";
+        statusVersion.textContent = "—";
+        statusWake.hidden = false;
+        return;
+      }
+
+      showStatusUnavailable("The status checker hasn't completed a usable server check yet.");
+    };
+
+    const refreshServerStatus = async () => {
+      if (!statusEndpoint) {
+        showStatusUnavailable("The status endpoint hasn't been configured.");
+        return;
+      }
+
+      const controller = new AbortController();
+      const timeout = window.setTimeout(() => controller.abort(), 7000);
+      try {
+        const response = await fetch(statusEndpoint, {
+          method:"GET",
+          headers:{ Accept:"application/json" },
+          cache:"no-store",
+          credentials:"omit",
+          signal:controller.signal
+        });
+        if (!response.ok) throw new Error("Status API returned HTTP " + response.status);
+        const payload = await response.json();
+        renderServerStatus(payload);
+      } catch (_) {
+        showStatusUnavailable("The live status service couldn't be reached. This doesn't tell us whether the Minecraft server itself is offline.");
+      } finally {
+        window.clearTimeout(timeout);
+      }
+    };
+
+    void refreshServerStatus();
+    window.setInterval(refreshServerStatus, 45000);
+  }
+
   const intro = document.querySelector(".entrance-screen");
   if (intro) window.setTimeout(() => intro.remove(), 2400);
 
