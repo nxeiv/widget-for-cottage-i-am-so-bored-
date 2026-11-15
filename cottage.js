@@ -265,7 +265,7 @@
         const payload = await response.json();
         renderServerStatus(payload);
       } catch (_) {
-        showStatusUnavailable("The live status service couldn't be reached. This doesn't tell us whether the Minecraft server itself is offline.");
+        showStatusUnavailable("Live status is currently unavailable. This doesn't necessarily mean the Minecraft server is offline.");
       } finally {
         window.clearTimeout(timeout);
       }
