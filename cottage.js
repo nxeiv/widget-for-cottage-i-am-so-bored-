@@ -194,6 +194,7 @@
     const statusVersion = statusCard.querySelector("[data-status-version]");
     const statusChecked = statusCard.querySelector("[data-status-checked]");
     const statusWake = statusCard.querySelector("[data-status-wake]");
+    const statusFootnote = statusCard.querySelector("[data-status-footnote]");
 
     const showStatusUnavailable = (message) => {
       statusCard.dataset.statusState = "unknown";
@@ -204,6 +205,7 @@
       statusVersion.textContent = "—";
       statusChecked.textContent = "—";
       statusWake.hidden = true;
+      if (statusFootnote) statusFootnote.hidden = false;
     };
 
     const renderServerStatus = (status) => {
@@ -229,6 +231,7 @@
         statusPlayers.textContent = players === null ? "—" : (maximum === null ? String(players) : players + " / " + maximum);
         statusVersion.textContent = typeof status.version === "string" && status.version ? status.version : "—";
         statusWake.hidden = true;
+        if (statusFootnote) statusFootnote.hidden = true;
         return;
       }
 
@@ -239,6 +242,7 @@
         statusPlayers.textContent = "—";
         statusVersion.textContent = "—";
         statusWake.hidden = false;
+        if (statusFootnote) statusFootnote.hidden = false;
         return;
       }
 
