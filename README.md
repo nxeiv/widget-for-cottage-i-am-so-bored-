@@ -75,8 +75,7 @@ The hero includes a subtle blueprint/map layer with:
 The map markers are positioned against the actual grid rather than arbitrary percentage coordinates.
 
 Current connection details:
-- Java: `the-cottage-c1-s6.playwithbao.com:34159`
-- Bedrock: `the-cottage-c1-s6.playwithbao.com:32211`
+- Java and Bedrock: use the latest connection details in the designated [Discord joining announcement](https://discord.com/channels/1398568016915992667/1478252152169431134/1563549543365222513). The public website repository intentionally contains no server address or port.
 - Java joining guide: https://discord.com/channels/1398568016915992667/1478252152169431134/1563549543365222513
 - Bedrock joining uses direct server entry only; friends-list invitations are not presented as an alternative.
 - Bedrock version support follows the versions supported by Geyser; individual account/client setups may still need staff help.
