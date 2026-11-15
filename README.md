@@ -21,7 +21,7 @@ It is designed like a small place on the internet that belongs to an existing gr
 - visual without becoming busy
 - detailed without relying on huge animations
 
-The website should feel like **opening the door to the Cottage**, then walking out into its backyard. It intentionally avoids live server counters and external status polling.
+The website should feel like **opening the door to the Cottage**, then walking out into its backyard. The SMP page includes a small live status card; the main community home remains focused on people and friendships.
 
 ---
 
@@ -59,7 +59,8 @@ It includes:
 - archival screenshots from earlier Cottage★ worlds (Season 6 starts fresh)
 - feature directory
 - server rules
-- cross-platform connection guidance without restoring the removed public connection-details section
+- cross-platform connection guidance without publishing connection details
+- a live Service Online card backed by a private server ping from Main Bot
 - Season 6 feature cards for Better Mending, Vein Mining, UltimateTeams, DiscordSRV, and Bedrock skin support
 - Discord/home navigation
 
@@ -74,8 +75,7 @@ The hero includes a subtle blueprint/map layer with:
 The map markers are positioned against the actual grid rather than arbitrary percentage coordinates.
 
 Current connection details:
-- Java: `the-cottage-c1-s6.playwithbao.com:34159`
-- Bedrock: `the-cottage-c1-s6.playwithbao.com:32211`
+- Java and Bedrock: use the latest connection details in the designated [Discord joining announcement](https://discord.com/channels/1398568016915992667/1478252152169431134/1563549543365222513). The public website repository intentionally contains no server address or port.
 - Java joining guide: https://discord.com/channels/1398568016915992667/1478252152169431134/1563549543365222513
 - Bedrock joining uses direct server entry only; friends-list invitations are not presented as an alternative.
 - Bedrock version support follows the versions supported by Geyser; individual account/client setups may still need staff help.
@@ -176,7 +176,7 @@ Minecraft is important, but it is an activity within the community rather than t
 
 ### People before metrics.
 
-Avoid player counts, fake member counts, fake activity, artificial social-proof sections, or anything that makes the site look like it is chasing server traffic. The site does not poll the old WispByte bot API.
+Avoid fake member counts, fake activity, or artificial social-proof sections. The SMP status card is a practical service indicator, not a popularity metric. It receives only a sanitized response from Main Bot; never put the Minecraft hostname or port in website HTML, JavaScript, CSS, or documentation.
 
 ### Real media over stock media.
 
@@ -265,7 +265,9 @@ The mobile experience is treated as a first-class layout rather than a shrunk de
 
 # Status integration
 
-The homepage and SMP page intentionally do not display live player counts, session uptime, or online/offline server status. The old WispByte status API and browser polling have been removed. See [the status-removal verification checklist](docs/STATUS_REMOVAL_CHECKLIST.md) for the remaining visual checks.
+The SMP page polls Main Bot's read-only status endpoint every 45 seconds. It displays online state, player count, version, and last-checked time. The public API never returns the Minecraft hostname, port, MOTD, player names, or raw connection errors. If a ping fails, the card says **Not responding** rather than assuming the server is sleeping; the manual wake instructions link to the designated Discord joining message and the Wake Server page. The website never submits the server address automatically.
+
+See [the status integration checklist](docs/STATUS_REMOVAL_CHECKLIST.md) for deployment and privacy checks.
 
 ---
 
