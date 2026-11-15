@@ -1,0 +1,106 @@
+name: Motion intro preview
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "motion/production/**"
+      - "motion/README.md"
+      - "Media/**"
+      - ".github/workflows/motion-intro-preview.yml"
+  push:
+    branches:
+      - motion-intro-final
+    paths:
+      - "motion/production/**"
+      - "motion/README.md"
+      - "Media/**"
+      - ".github/workflows/motion-intro-preview.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: motion-intro-preview-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  validate-and-preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    defaults:
+      run:
+        working-directory: motion/production/remotion
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install FFmpeg for export and audio quality checks
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y ffmpeg imagemagick fonts-dejavu-core
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Generate original soundtrack
+        run: npm run audio:generate
+
+      - name: Ensure Remotion browser
+        run: npx remotion browser ensure
+
+      - name: Type-check source
+        run: npm run typecheck
+
+      - name: Discover compositions
+        run: npm run compositions
+
+      - name: Render scene preview stills
+        run: npm run render:stills
+
+      - name: Build landscape and portrait contact sheets
+        run: |
+          montage -font /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf out/01-opening.png out/02-familiar.png out/03-laugh.png out/04-together.png out/05-backyard.png out/06-memory.png out/07-ending.png -tile 2x -geometry '640x360>' -background '#F4EBDD' -gravity center -bordercolor '#E1D2BF' -border 8 out/storyboard-landscape-contact-sheet.png
+          montage -font /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf out/portrait-opening.png out/portrait-backyard.png -tile 2x -geometry '360x640>' -background '#F4EBDD' -gravity center -bordercolor '#E1D2BF' -border 8 out/storyboard-portrait-contact-sheet.png
+
+      - name: Publish storyboard previews for early review
+        uses: actions/upload-artifact@v4
+        with:
+          name: cottage-motion-storyboard-preview
+          path: motion/production/remotion/out/*.png
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Render final landscape master
+        run: npm run render:landscape
+
+      - name: Render final portrait master
+        run: npm run render:portrait
+
+      - name: Render 60 FPS landscape compatibility export
+        run: npm run render:landscape:60
+
+      - name: Render 60 FPS portrait compatibility export
+        run: npm run render:portrait:60
+
+      - name: Verify all exports and package standalone soundtrack
+        run: npm run deliver:prepare
+
+      - name: Upload rendered deliverables
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cottage-motion-intro-deliverables
+          path: |
+            motion/production/remotion/out/*.png
+            motion/production/remotion/out/*.mp4
+            motion/production/remotion/out/*.wav
+            motion/production/remotion/out/*.mp3
+            motion/production/remotion/out/technical-QA.txt
+          if-no-files-found: error
+          retention-days: 30

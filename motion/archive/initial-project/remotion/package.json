@@ -1,0 +1,23 @@
+{
+  "name": "the-cottage-motion-intro",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Editable Remotion project for The Cottage motion-design introduction",
+  "scripts": {
+    "dev": "remotion studio src/index.ts",
+    "render:landscape": "remotion render src/index.ts CottageIntro out/cottage-intro.mp4 --codec=h264",
+    "render:vertical": "remotion render src/index.ts CottageIntroVertical out/cottage-intro-vertical.mp4 --codec=h264",
+    "still:opening": "remotion still src/index.ts CottageIntro out/opening.png --frame=120"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.0"
+  },
+  "devDependencies": {
+    "@remotion/cli": "^4.0.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "typescript": "^5.5.4"
+  }
+}
