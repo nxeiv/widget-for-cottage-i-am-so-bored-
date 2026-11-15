@@ -209,7 +209,6 @@ Current motion includes:
 - cinematic image lightbox transitions
 - cross-page View Transition API effects
 - the small Cottage★ seal / micro-detail animation
-- live status state changes
 - mobile navigation transitions
 
 The motion system is intentionally restrained.
@@ -226,41 +225,6 @@ Animations and transitions are reduced or disabled where appropriate.
 
 ---
 
-# Live SMP status
-
-The website reads public Minecraft status from the **The Cottage★ Main Bot** through a read-only HTTP bridge.
-
-Current status endpoint:
-
-`https://the-cottage-bot.wisp.uno/api/status`
-
-Available endpoints:
-
-| Endpoint | Purpose |
-| --- | --- |
-| `GET /health` | Basic bridge health |
-| `GET /api/status` | Public Minecraft state |
-
-The public status payload can include:
-
-- online state
-- connection state
-- player count
-- session uptime
-- reconnect attempts
-- status timestamp
-
-The bridge deliberately does **not** expose the Minecraft hostname or port.
-
-The website polls the status endpoint periodically and displays friendly states such as:
-
-- **The backyard is awake.**
-- **The backyard is awake, just a little quiet.**
-- **The backyard is waking up.**
-- **The backyard is asleep right now.**
-
----
-
 # Main files
 
 | File | Purpose |
@@ -270,7 +234,7 @@ The website polls the status endpoint periodically and displays friendly states 
 | `gallery.html` | Visual archive |
 | `404.html` | Custom missing-page experience |
 | `cottage.css` | Shared visual system and responsive styling |
-| `cottage.js` | Shared interactions, motion, lightbox, navigation, filters, and live status |
+| `cottage.js` | Shared interactions, motion, lightbox, navigation, and filters |
 
 
 
@@ -293,9 +257,15 @@ The site includes:
 - touch/swipe support in the lightbox
 - responsive layouts
 - reduced-motion support
-- semantic labels for live status regions
+- semantic labels for interactive regions
 
 The mobile experience is treated as a first-class layout rather than a shrunk desktop page.
+
+---
+
+# Status integration
+
+The homepage and SMP page intentionally do not display live player counts, session uptime, or online/offline server status. The old WispByte status API and browser polling have been removed. See [the status-removal verification checklist](docs/STATUS_REMOVAL_CHECKLIST.md) for the remaining visual checks.
 
 ---
 
