@@ -36,6 +36,43 @@
 </div>
 <img class="micro-seal" src="Media/cottage-seal.svg" alt="" aria-hidden="true" decoding="async"><div class="smp-hero-title"><div class="eyebrow">The Cottage★ · Chapter 1 • Season 6</div><h1>The Cottage★ Chapter 1 Season 6</h1><p>The shared backyard of The Cottage★ — a place to build, explore, get lost, and make stories together when everyone feels like playing.</p><div class="smp-facts"><div class="fact"><span>Gamemode</span><strong>Vanilla survival</strong></div><div class="fact"><span>Access</span><strong>Invite Only</strong></div><div class="fact"><span>Platforms</span><strong>Java + Bedrock</strong></div><div class="fact"><span>Extras</span><strong>Light QoL</strong></div></div></div></div></header>
 
+<section class="section service-status-section" id="service-status" aria-labelledby="service-status-title">
+  <div class="section-head reveal">
+    <div><div class="eyebrow">Live backyard status</div><h2 id="service-status-title">Service Online</h2></div>
+    <p class="section-intro">A quiet check-in from the backyard. The status is checked privately by Main Bot; connection details stay in Discord.</p>
+  </div>
+  <article class="service-status-card paper reveal" data-minecraft-status data-status-api="https://the-cottage-bot.wisp.uno/api/status" aria-live="polite">
+    <div class="service-status-top">
+      <div class="service-status-heading">
+        <span class="service-status-indicator" data-status-indicator aria-hidden="true"></span>
+        <div>
+          <div class="eyebrow" data-status-label>Checking status</div>
+          <h3 data-status-title>Checking the backyard…</h3>
+          <p data-status-message>Getting the latest server response.</p>
+        </div>
+      </div>
+      <div class="service-status-metrics">
+        <div class="service-status-metric"><span>Players</span><strong data-status-players>—</strong></div>
+        <div class="service-status-metric"><span>Version</span><strong data-status-version>—</strong></div>
+        <div class="service-status-metric"><span>Last checked</span><strong data-status-checked>—</strong></div>
+      </div>
+    </div>
+    <div class="service-status-wake" data-status-wake hidden>
+      <div class="service-status-wake-copy">
+        <strong>The backyard might be asleep.</strong>
+        <p>If the server is sleeping, you can send it a wake request:</p>
+        <ol>
+          <li>Find the latest server address in our <a href="https://discord.com/channels/1398568016915992667/1478252152169431134/1563549543365222513" target="_blank" rel="noopener noreferrer">Discord announcement</a>.</li>
+          <li>Copy the address.</li>
+          <li>Press the button below and paste it into the Wake Server page.</li>
+        </ol>
+        <a class="btn primary liquid-glass service-status-wake-button" href="https://www.baohost.com/wake/" target="_blank" rel="noopener noreferrer">Wake Server <span class="arrow">→</span></a>
+      </div>
+    </div>
+    <p class="service-status-footnote">A failed response can also mean the server is stopped or temporarily unreachable; the card won't assume hibernation.</p>
+  </article>
+</section>
+
 <section class="section smp-gallery-section" id="gallery">
   <div class="section-head reveal">
     <div><div class="eyebrow">Seen from inside</div><h2>The backyard, as it actually looks.</h2></div>
