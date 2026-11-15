@@ -21,7 +21,7 @@ It is designed like a small place on the internet that belongs to an existing gr
 - visual without becoming busy
 - detailed without relying on huge animations
 
-The website should feel like **opening the door to the Cottage**, then walking out into its backyard.
+The website should feel like **opening the door to the Cottage**, then walking out into its backyard. It intentionally avoids live server counters and external status polling.
 
 ---
 
@@ -45,8 +45,6 @@ It includes:
 - community moments
 - the visual archive link
 - the Cottage history timeline
-- live SMP status
-- current session/player information
 - the Cottage★ Bot section
 - the SMP/backyard introduction
 - Discord join area
@@ -59,8 +57,6 @@ It includes:
 
 - Chapter 1 • Season 6 presentation
 - archival screenshots from earlier Cottage★ worlds (Season 6 starts fresh)
-- live server state
-- session uptime and player count
 - feature directory
 - server rules
 - cross-platform connection guidance without restoring the removed public connection-details section
@@ -180,7 +176,7 @@ Minecraft is important, but it is an activity within the community rather than t
 
 ### People before metrics.
 
-Avoid fake member counts, fake activity, artificial social-proof sections, or anything that makes the site look like it is chasing server traffic.
+Avoid player counts, fake member counts, fake activity, artificial social-proof sections, or anything that makes the site look like it is chasing server traffic. The site does not poll the old WispByte bot API.
 
 ### Real media over stock media.
 
