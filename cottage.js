@@ -225,7 +225,7 @@
       if (state === "online" && status.online === true) {
         statusLabel.textContent = "ONLINE";
         statusTitle.textContent = "The backyard is open.";
-        statusMessage.textContent = "The server is responding and ready for friends.";
+        statusMessage.textContent = "The server is open and ready for friends.";
         const players = Number.isInteger(status.players) && status.players >= 0 ? status.players : null;
         const maximum = Number.isInteger(status.maxPlayers) && status.maxPlayers >= 0 ? status.maxPlayers : null;
         statusPlayers.textContent = players === null ? "—" : (maximum === null ? String(players) : players + " / " + maximum);
