@@ -1,13 +1,22 @@
-# Website status removal — verification
+# SMP Service Online — verification checklist
 
-- [x] Homepage no longer contains a live Minecraft status panel (source checked).
-- [x] SMP page no longer contains a live Minecraft status panel (source checked).
-- [x] Neither page contains a `cottage-status-api` meta tag.
-- [x] Shared JavaScript contains no `fetch` call or timer for `/api/status`.
-- [x] Shared CSS contains no unused live-status panel, player-count, uptime, or status-dot styles.
-- [x] README and page documentation describe the bridge as removed, not active.
-- [x] No reference to `the-cottage-bot.wisp.uno` remains in website source.
-- [x] SMP hero, screenshots, feature directory, rules, and Discord links remain intact.
-- [x] Homepage community story, gallery, bot information, and Discord widget remain intact.
-- [x] No player count, session uptime, or online/offline status is displayed.
-- [ ] Page loads without console errors on desktop and mobile (requires browser verification).
+## Website
+- [x] Restore the Service Online card on `smp.html`.
+- [x] Poll the read-only status API every 45 seconds.
+- [x] Display online state, player count, version, and last-checked time when available.
+- [x] Show manual wake instructions only when the Minecraft ping reports unavailable.
+- [x] Link to the designated Discord joining message and the Wake Server page.
+- [x] Use the exact instruction: “Press the button below and paste it into the Wake Server page.”
+- [x] Never render a Minecraft hostname, IP address, or port.
+- [x] Hide the wake prompt when the status API itself cannot be reached or the status is stale.
+- [x] Preserve responsive styling and reduced-motion behavior from the existing site.
+
+## Deployment checks
+- [ ] Deploy the Main Bot status API and confirm `GET /health`.
+- [ ] Confirm `GET /api/status` returns only `online`, `state`, `players`, `maxPlayers`, `version`, and `checkedAt`.
+- [ ] Confirm the API has CORS configured for `https://the-cottage.onrender.com`.
+- [ ] Confirm the public website can fetch the API without console errors.
+- [ ] Test an online response, a failed Minecraft ping, a stale response, and an unreachable API.
+- [ ] Verify desktop and mobile layouts in a browser.
+
+A failed Minecraft ping is not proof of hibernation. The unavailable state can mean hibernation, a stopped server, a crash, or a network issue.
